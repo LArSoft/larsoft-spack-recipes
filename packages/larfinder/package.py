@@ -10,16 +10,16 @@ from spack.package import *
 class Larfinder(CMakePackage):
     """Common cmake bits for larsoft"""
 
-    # FIXME: Add a proper url for your package's homepage here.
     homepage = "https://github.com/LArSoft"
-    url = "https://github.com/LArSoft/larfinder/archive/refs/tags/LARSOFT_SUITE_v09_79_00.tar.gz"
+    url = "https://github.com/LArSoft/larfinder/archive/refs/tags/LARSOFT_SUITE_v09_90_01.tar.gz"
 
     maintainers = ["marcmengel"]
 
-    version("09_79_00", sha256="af26656bca92225d0e741f6c96c50b382f5ab2170409272b107ff8e564a3b46c")
+    def url_for_version(self, version):
+        html_prefix = "https://github.com/LArSoft/larfinder/archive/refs/tags"
+        return f"{html_prefix}/LARSOFT_SUITE_v{version.underscored}.tar.gz"
+
+    version("09.90.01", sha256="129d20e548eec79292dc43567aa200a65c2e48385f00000f3c54bd1e20152761")
+    version("develop", branch="develop", get_full_repo=True)
 
     depends_on("cetmodules", type="build")
-
-    def cmake_args(self):
-        args = []
-        return args
