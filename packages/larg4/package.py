@@ -91,6 +91,7 @@ class Larg4(CMakePackage):
     depends_on("art")
     depends_on("canvas-root-io")
     depends_on("art-root-io")
+    depends_on("larcore")
     depends_on("nug4")
     depends_on("nurandom")
     depends_on("boost")
