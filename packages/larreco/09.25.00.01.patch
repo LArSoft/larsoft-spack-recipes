@@ -1,0 +1,52 @@
+diff --git a/larreco/QuadVtx/QuadVtx_module.cc b/larreco/QuadVtx/QuadVtx_module.cc
+index e41183fd..241770ad 100644
+--- a/larreco/QuadVtx/QuadVtx_module.cc
++++ b/larreco/QuadVtx/QuadVtx_module.cc
+@@ -147,7 +147,7 @@ namespace quad {
+         for (unsigned int j = i + offset + 1; j < pts.size(); j += stride) {
+           const Line2D l(pts[i], pts[j]);
+ 
+-          if (isinf(l.m) || isnan(l.m) || isinf(l.c) || isnan(l.c)) continue;
++          if (std::isinf(l.m) || std::isnan(l.m) || std::isinf(l.c) || std::isnan(l.c)) continue;
+ 
+           if (R > 0) {
+             float z1, z2;
+diff --git a/larreco/SpacePointSolver/HitReaders/HitsICARUS_tool.cc b/larreco/SpacePointSolver/HitReaders/HitsICARUS_tool.cc
+index d290153b..d6fab9e0 100644
+--- a/larreco/SpacePointSolver/HitReaders/HitsICARUS_tool.cc
++++ b/larreco/SpacePointSolver/HitReaders/HitsICARUS_tool.cc
+@@ -75,7 +75,7 @@ namespace reco3d {
+     std::vector<art::Ptr<recob::Hit>>& secondIndHits) const // output hits plane 2
+   {
+     for (auto& hit : inputHits) {
+-      if (hit->Integral() < 0 || isnan(hit->Integral()) || isinf(hit->Integral())) {
++      if (hit->Integral() < 0 || std::isnan(hit->Integral()) || std::isinf(hit->Integral())) {
+         mf::LogWarning("Hits_ICARUS") << "WARNING: bad recob::Hit::Integral() = " << hit->Integral()
+                                       << ". Skipping." << std::endl;
+         continue;
+diff --git a/larreco/SpacePointSolver/HitReaders/HitsStandard_tool.cc b/larreco/SpacePointSolver/HitReaders/HitsStandard_tool.cc
+index f9cbae17..f51c2ee6 100644
+--- a/larreco/SpacePointSolver/HitReaders/HitsStandard_tool.cc
++++ b/larreco/SpacePointSolver/HitReaders/HitsStandard_tool.cc
+@@ -77,7 +77,7 @@ namespace reco3d {
+     bool is2view = false;
+ 
+     for (auto& hit : inputHits) {
+-      if (hit->Integral() < 0 || isnan(hit->Integral()) || isinf(hit->Integral())) {
++      if (hit->Integral() < 0 || std::isnan(hit->Integral()) || std::isinf(hit->Integral())) {
+         mf::LogWarning("HitsStandard")
+           << "WARNING: bad recob::Hit::Integral() = " << hit->Integral() << ". Skipping."
+           << std::endl;
+diff --git a/larreco/SpacePointSolver/SpacePointSolver_module.cc b/larreco/SpacePointSolver/SpacePointSolver_module.cc
+index 00400de5..e74f797e 100644
+--- a/larreco/SpacePointSolver/SpacePointSolver_module.cc
++++ b/larreco/SpacePointSolver/SpacePointSolver_module.cc
+@@ -216,7 +216,7 @@ namespace reco3d {
+           const double coupling = exp(-sqrt(dist2) / 2);
+           sc1->fNeighbours.emplace_back(sc2, coupling);
+ 
+-          if (isnan(1 / sqrt(dist2)) || isinf(1 / sqrt(dist2))) {
++          if (std::isnan(1 / sqrt(dist2)) || std::isinf(1 / sqrt(dist2))) {
+             std::cout << dist2 << " " << sc1->fX << " " << sc2->fX << " " << sc1->fY << " "
+                       << sc2->fY << " " << sc1->fZ << " " << sc2->fZ << std::endl;
+             abort();
