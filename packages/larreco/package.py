@@ -50,6 +50,20 @@ class Larreco(CMakePackage, FnalGithubPackage):
     depends_on("rstartree")
     depends_on("tbb")
 
+    patch(self):
+        filter_file('|| isnan(hit->Integral()) || isinf(hit->Integral()))', 
+                '|| std::isnan(hit->Integral()) || std::isinf(hit->Integral()))',
+                'larreco/SpacePointSolver/HitReaders/HitsStandard_tool.cc')
+        filter_file('isinf(l.m) || isnan(l.m) || isinf(l.c) || isnan(l.c)',
+                'std::isinf(l.m) || std::isnan(l.m) || std::isinf(l.c) || std::isnan(l.c)',
+                'larreco/QuadVtx/QuadVtx_module.cc')
+        filter_file('|| isnan(hit->Integral()) || isinf(hit->Integral())',
+                '|| std::isnan(hit->Integral()) || std::isinf(hit->Integral())',
+                'larreco/SpacePointSolver/HitReaders/HitsICARUS_tool.cc')
+        filter_file('(isnan(1 / sqrt(dist2)) || isinf(1 / sqrt(dist2)))',
+                '(std::isnan(1 / sqrt(dist2)) || std::isinf(1 / sqrt(dist2)))'
+                'larreco/SpacePointSolver/SpacePointSolver_module.cc')
+
     @cmake_preset
     def cmake_args(self):
         return [
