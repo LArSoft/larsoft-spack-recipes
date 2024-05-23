@@ -50,7 +50,7 @@ class Larreco(CMakePackage, FnalGithubPackage):
     depends_on("rstartree")
     depends_on("tbb")
 
-    patch(self):
+    def patch(self):
         filter_file('|| isnan(hit->Integral()) || isinf(hit->Integral()))', 
                 '|| std::isnan(hit->Integral()) || std::isinf(hit->Integral()))',
                 'larreco/SpacePointSolver/HitReaders/HitsStandard_tool.cc')
