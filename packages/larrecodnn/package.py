@@ -54,7 +54,7 @@ class Larrecodnn(CMakePackage, FnalGithubPackage):
         return [
             self.define_from_variant("CMAKE_CXX_STANDARD", "cxxstd"),
             self.define(
-                "DCMAKE_PREFIX_PATH",
+                "CMAKE_PREFIX_PATH",
                 "{0}/lib/python{1}/site-packages/torch".format(
                     self.spec["py-torch"].prefix, self.spec["python"].version.up_to(2)
                 ),
