@@ -14,9 +14,7 @@ class Larexamples(CMakePackage, FnalGithubPackage):
     repo = "LArSoft/larexamples"
     version_patterns = ["v09_00_00", "09.08.18"]
 
-    version(
-        "09.09.05.01", sha256="62898fd2ffaa207dd391a24a68e659745344be08b8a6065a9f86019f27b7e1b8"
-    )
+    version("09.09.05.01", sha256="536893b93a4bdcc84a265f6149b3543d8bb26e2d06542933564a606de23e4efb")
     version("develop", branch="develop", get_full_repo=True)
 
     cxxstd_variant("17", "20", default="17")

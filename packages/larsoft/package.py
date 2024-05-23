@@ -16,9 +16,7 @@ class Larsoft(CMakePackage, FnalGithubPackage):
     homepage = "https://larsoft.org"
     version_patterns = ["v09_00_00", "09.85.00"]
 
-    version(
-        "09.90.01.01", sha256="cd2cc90aad51cd4698853d7ee1922a407f2b05a0788d60f7b16f555fe50b886a"
-    )
+    version("09.90.01.01", sha256="cd2cc90aad51cd4698853d7ee1922a407f2b05a0788d60f7b16f555fe50b886a")
     version("develop", branch="develop", get_full_repo=True)
 
     cxxstd_variant("17", "20", default="17")
