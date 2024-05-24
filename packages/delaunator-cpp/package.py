@@ -20,3 +20,4 @@ class DelaunatorCpp(Package):
         install_tree(
             "{0}/include".format(self.stage.source_path),
             "{0}".format(prefix)
+            )
