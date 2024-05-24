@@ -27,6 +27,7 @@ class Larrecodnn(CMakePackage, FnalGithubPackage):
     depends_on("cetlib")
     depends_on("cetlib-except")
     depends_on("clhep")
+    depends_on("delaunator-cpp")
     depends_on("grpc")
     depends_on("hdf5")
     depends_on("hep-hpc")
@@ -57,6 +58,10 @@ class Larrecodnn(CMakePackage, FnalGithubPackage):
                 "CMAKE_PREFIX_PATH",
                 "{0}/lib/python{1}/site-packages/torch".format(
                     self.spec["py-torch"].prefix, self.spec["python"].version.up_to(2)
+                ),
+            self.define(
+                "DELAUNATOR_INC",
+                "{0}".format(self.spec["delaunator"].prefix)
                 ),
             ),
         ]
