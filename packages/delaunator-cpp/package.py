@@ -5,7 +5,7 @@
 from spack.package import *
 
 
-class DelaunatorCpp(CMakePackage):
+class DelaunatorCpp(Package):
     """FIXME: Put a proper description of your package here."""
 
     url = "https://github.com/delfrrr/delaunator-cpp/archive/refs/tags/v0.4.0.tar.gz"
@@ -16,6 +16,7 @@ class DelaunatorCpp(CMakePackage):
     version("0.1.0", sha256="1a532388449ca4ff41c9ca4ebf3557b624ca4d99497c47be3d1565bee4246d13")
 
 
-    def cmake_args(self):
-        args = []
-        return args
+    def install(self, spec, prefix):
+        install_tree(
+            "{0}/include".format(self.stage.source_path),
+            "{0}".format(prefix)
