@@ -61,7 +61,7 @@ class Larrecodnn(CMakePackage, FnalGithubPackage):
                 ),
             self.define(
                 "DELAUNATOR_INC",
-                "{0}".format(self.spec["delaunator"].prefix)
+                "{0}".format(self.spec["delaunator-cpp"].prefix)
                 ),
             ),
         ]
