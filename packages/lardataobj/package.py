@@ -103,7 +103,8 @@ class Lardataobj(CMakePackage):
     depends_on("cetmodules", type="build")
 
     def cmake_args(self):
-        args = [self.define_from_variant("CMAKE_CXX_STANDARD", "cxxstd")]
+        args = [self.define_from_variant("CMAKE_CXX_STANDARD", "cxxstd"), "-DFW_DIR=fw"]
+       
         return args
 
     def setup_build_environment(self, spack_env):
@@ -124,7 +125,7 @@ class Lardataobj(CMakePackage):
         # Set path to find fhicl files
         spack_env.prepend_path("FHICL_INCLUDE_PATH", os.path.join(self.build_directory, "fcl"))
         # Set path to find gdml files
-        spack_env.prepend_path("FW_SEARCH_PATH", os.path.join(self.build_directory, "fcl"))
+        spack_env.prepend_path("FW_SEARCH_PATH", os.path.join(self.build_directory, "fw"))
         # Cleaup.
         sanitize_environments(spack_env)
 

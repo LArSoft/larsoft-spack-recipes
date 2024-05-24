@@ -121,7 +121,7 @@ class Larsim(CMakePackage):
             self.define("IFDH_LIB", self.spec["ifdhc"].prefix),
             self.define("GENIE_INC", self.spec["genie"].prefix.include),
             self.define("GENIE_VERSION", "v" + self.spec["genie"].version.underscored),
-            self.define("LARSOFT_DATA_DIR", "v" + self.spec["larsoft-data"].prefix),
+            self.define("LARSOFT_DATA_DIR", self.spec["larsoft-data"].prefix),
             self.define(
                 "LARSOFT_DATA_VERSION", "v" + self.spec["larsoft-data"].version.underscored
             ),

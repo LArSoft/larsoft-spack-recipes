@@ -94,10 +94,13 @@ class Larg4(CMakePackage):
     depends_on("nug4")
     depends_on("nurandom")
     depends_on("boost")
+    depends_on("larfinder")
+    depends_on("lardataalg")
+    depends_on("larcore")
     depends_on("cetmodules", type="build")
 
     def cmake_args(self):
-        args = [self.define_from_variant("CMAKE_CXX_STANDARD", "cxxstd")]
+        args = [self.define_from_variant("CMAKE_CXX_STANDARD", "cxxstd"), "-DFW_DIR=fw"]
         return args
 
     def flag_handler(self, name, flags):

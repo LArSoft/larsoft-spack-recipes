@@ -33,7 +33,7 @@ class Larvecutils(CMakePackage):
 
     version(
         "09.79.00",
-        tag="v09_79_00",
+        tag="LARSOFT_SUITE_v09_79_00",
         git="https://github.com/LArSoft/larvecutils.git",
         get_full_repo=True,
     )
