@@ -59,10 +59,10 @@ class Larrecodnn(CMakePackage, FnalGithubPackage):
                 "{0}/lib/python{1}/site-packages/torch".format(
                     self.spec["py-torch"].prefix, self.spec["python"].version.up_to(2)
                 ),
+            ),
             self.define(
                 "DELAUNATOR_INC",
-                "{0}".format(self.spec["delaunator-cpp"].prefix)
-                ),
+                "{0}/include".format(self.spec["delaunator-cpp"].prefix)
             ),
         ]
 
