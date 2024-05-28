@@ -47,6 +47,7 @@ class Larrecodnn(CMakePackage, FnalGithubPackage):
     depends_on("py-torch")
     depends_on("py-torch-scatter")
     depends_on("torch-scatter")
+    depends_on("torch")
     depends_on("root")
     depends_on("tbb")
     depends_on("triton")
