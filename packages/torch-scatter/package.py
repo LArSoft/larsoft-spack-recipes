@@ -27,13 +27,10 @@ class TorchScatter(CMakePackage):
     # Historical dependencies
     depends_on("py-pytest-runner", type="build", when="@:2.0.7")
 
-    variant(
-        "cxxstd",
-        default="17",
-        values=("17", "20"),
-        multi=False,
-        description="Use the specified C++ standard when building.",
-    )
+    def patch(self):
+        filter_file(r'set\(CMAKE_CXX_STANDARD 14\)',
+                'set(CMAKE_CXX_STANDARD 17)',
+                'CMakeLists.txt')
 
     def setup_build_environment(self, env):
         if self.spec.satisfies("@2.0.6:"):
@@ -55,10 +52,3 @@ class TorchScatter(CMakePackage):
 
         env.prepend_path("CMAKE_PREFIX_PATH", "{0}".format(self.spec["py-torch"].package.cmake_prefix_paths[0]))
 
-    def cmake_args(self):
-        define = self.define
-        define_from_variant = self.define_from_variant
-        options = []
-        
-        options.append(define_from_variant("CMAKE_CXX_STANDARD", "cxxstd"))
-        return options
