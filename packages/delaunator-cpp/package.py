@@ -17,7 +17,8 @@ class DelaunatorCpp(Package):
 
 
     def install(self, spec, prefix):
+        mkdirp("{0}/include".format(prefix))
         install_tree(
             "{0}/include".format(self.stage.source_path),
-            "{0}".format(prefix)
+            "{0}/include".format(prefix)
             )
