@@ -61,12 +61,18 @@ class Larwirecell(CMakePackage, FnalGithubPackage):
             "find_package(Boost COMPONENTS graph date_time exception filesystem iostreams stacktrace_basic)\nfind_package(art ",
             "CMakeLists.txt",
         )
+        filter_file(
+            r"jsoncpp_lib jsonnet_lib",
+            "jsoncpp jsonnet",
+            "Modules/FindWireCell.cmake",
+        )
 
     @cmake_preset
     def cmake_args(self):
         return [
             self.define_from_variant("CMAKE_CXX_STANDARD", "cxxstd"),
             self.define("IGNORE_ABSOLUTE_TRANSITIVE_DEPENDENCIES", True),
+            self.define("jsoncpp_DIR", "{0}".format(self.spec["jsoncpp"].prefix))
         ]
 
     @sanitize_paths
