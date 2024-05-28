@@ -28,6 +28,7 @@ class Larsoft(CMakePackage, FnalGithubPackage):
 
     depends_on("cetmodules", type="build")
 
+    depends_on("larfinder")
     depends_on("larsoftobj")
     depends_on("larsoft-data")
     depends_on("larana")
