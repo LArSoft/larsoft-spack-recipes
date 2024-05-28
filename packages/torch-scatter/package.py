@@ -33,5 +33,5 @@ class TorchScatter(CMakePackage):
     depends_on("py-torch")
 
     def cmake_args(self):
-        args = [self.define("CMAKE_PREFIX_PATH","{0}".format(self.spec["py-torch"].cmake_prefix_paths))]
+        args = []
         return args
