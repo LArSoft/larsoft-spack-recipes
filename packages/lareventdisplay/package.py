@@ -13,7 +13,6 @@ class Lareventdisplay(CMakePackage, FnalGithubPackage):
     repo = "LArSoft/lareventdisplay"
     version_patterns = ["v09_00_00", "09.10.19"]
 
-    version("09.11.05.01", sha256="1a3cb9367df50f00c955c81b1822528601f9ccdc8feb0c11f6064b00c4c5a57d")
     version("09.11.05", sha256="ed021c8b5632e435026b5ebe4eb33dfceaed8764e2fa90d9735d764e93938253")
     version("develop", branch="develop", get_full_repo=True)
 

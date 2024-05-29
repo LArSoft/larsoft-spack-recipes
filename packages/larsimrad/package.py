@@ -13,7 +13,6 @@ class Larsimrad(CMakePackage, FnalGithubPackage):
     repo = "LArSoft/larsimrad"
     version_patterns = ["v09_00_00", "09.08.18"]
 
-    version("09.09.05.01", sha256="03d1259047dbfbf395b3d08e990c5d114e0285030f9a9a1fd0ab770684d1179b")
     version("09.09.05", sha256="a1bc6bfbbc375593b1dc018cd6e658d0236e2165f723ea59684aa872a04191be")
     version("develop", branch="develop", get_full_repo=True)
 

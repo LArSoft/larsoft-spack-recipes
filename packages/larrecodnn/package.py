@@ -13,7 +13,6 @@ class Larrecodnn(CMakePackage, FnalGithubPackage):
     repo = "LArSoft/larrecodnn"
     version_patterns = ["v09_00_00", "09.21.21"]
 
-    version("09.23.00.01", sha256="8d465c905b1df2bbc4bead83852fc43e283aa543e7b94fc60fc6227f4b75ed07")
     version("09.23.00", sha256="cbf64222f14879cda5eaa2adb7ed8c07bef82afd86a3925b31cc1719fd17e236")
     version("develop", branch="develop", get_full_repo=True)
 
@@ -43,7 +42,7 @@ class Larrecodnn(CMakePackage, FnalGithubPackage):
     depends_on("messagefacility")
     depends_on("nurandom")
     depends_on("nusimdata")
-    depends_on("protobuf", when="@:09.23.00.01")
+    depends_on("protobuf", when="@:09.23.00")
     depends_on("py-tensorflow")
     depends_on("py-torch")
     depends_on("torch-scatter")

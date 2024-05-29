@@ -14,7 +14,6 @@ class Larsim(CMakePackage, FnalGithubPackage):
     repo = "LArSoft/larsim"
     version_patterns = ["v09_00_00", "09.40.01"]
 
-    version("09.43.00.01", sha256="397fa4d50b00d2d0535266b71a60449f00707f1572f5110ab2f554d00ec0029a")
     version("09.43.00", sha256="c8a37c9f98cd3c7059ba3a52d5647411c8dfa83f7227d8e4ec0ed4cb43e701f1")
     version("develop", branch="develop", get_full_repo=True)
 

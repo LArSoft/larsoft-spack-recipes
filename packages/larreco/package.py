@@ -14,9 +14,6 @@ class Larreco(CMakePackage, FnalGithubPackage):
     repo = "LArSoft/larreco"
     version_patterns = ["v09_00_00", "09.23.09"]
 
-    version(
-        "09.25.00.01", sha256="0fb83e1b9b25e32a805b0832ba27dd1e78394382893dd0ba6de5c63a505e9dce"
-    )
     version("09.25.00", sha256="cae4f414b02a61d2cc0e1f915f71c0a6337418737e2939be0d01df931e73bc77")
     version("develop", branch="develop", get_full_repo=True)
 
@@ -51,7 +48,7 @@ class Larreco(CMakePackage, FnalGithubPackage):
     depends_on("rstartree")
     depends_on("tbb")
 
-    patch('09.25.00.01.patch', when='@09.25.00.01')
+    patch('09.25.00.patch', when='@09.25.00')
 
     @cmake_preset
     def cmake_args(self):
