@@ -17,6 +17,7 @@ class Larreco(CMakePackage, FnalGithubPackage):
     version(
         "09.25.00.01", sha256="0fb83e1b9b25e32a805b0832ba27dd1e78394382893dd0ba6de5c63a505e9dce"
     )
+    version("09.25.00", sha256="cae4f414b02a61d2cc0e1f915f71c0a6337418737e2939be0d01df931e73bc77")
     version("develop", branch="develop", get_full_repo=True)
 
     cxxstd_variant("17", "20", default="17")
