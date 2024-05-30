@@ -72,7 +72,7 @@ class Larwirecell(CMakePackage, FnalGithubPackage):
         return [
             self.define_from_variant("CMAKE_CXX_STANDARD", "cxxstd"),
             self.define("IGNORE_ABSOLUTE_TRANSITIVE_DEPENDENCIES", True),
-            self.define("jsoncpp_DIR", "{0}".format(self.spec["jsoncpp"].prefix))
+            self.define("jsoncpp_DIR", self.spec["jsoncpp"].prefix)
         ]
 
     @sanitize_paths
