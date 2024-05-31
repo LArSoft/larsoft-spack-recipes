@@ -13,7 +13,7 @@ class Larcoreobj(CMakePackage, FnalGithubPackage):
     repo = "LArSoft/larcoreobj"
     version_patterns = ["v09_00_00", "09.10.00"]
 
-    version("09.10.01", sha256="08414d16d95286c0bc19fbafdbc5ac95646a27f5f4e6b461365742476c366c69")
+    version("09.10.01", sha256="484cf2d48b3012961f695abf67bd8f7ddf33467ad9a8086e410b299deab140d1")
     version("develop", branch="develop", get_full_repo=True)
 
     cxxstd_variant("17", "20", default="17")

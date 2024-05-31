@@ -14,7 +14,7 @@ class Lardataalg(CMakePackage, FnalGithubPackage):
     repo = "LArSoft/lardataalg"
     version_patterns = ["v09_00_00", "09.17.00"]
 
-    version("09.17.03", sha256="138a67d9ff190540fb6e095639aa6b0c60b753e5fdc005304b8244f0f97ffe4f")
+    version("09.17.03", sha256="51097ce209b23101a05ea4b50b7ec5e936ba1762985f5f996d5f4de6b9cbe911")
     version("develop", branch="develop", get_full_repo=True)
 
     cxxstd_variant("17", "20", default="17")

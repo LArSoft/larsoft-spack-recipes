@@ -14,7 +14,7 @@ class Larcore(CMakePackage, FnalGithubPackage):
     repo = "LArSoft/larcore"
     version_patterns = ["v09_00_00", "09.11.00"]
 
-    version("09.11.01", sha256="2cc3cc0e90f5f4c49d3d3f8cf29d26b21686b34d88d31a9f553df5cff5d4e118")
+    version("09.11.01", sha256="60c85fab1f622274d6750c6578d372ad5c6d0fd28a857e79c82bcfcd828c6b09")
     version("develop", branch="develop", get_full_repo=True)
 
     cxxstd_variant("17", "20", default="17")

@@ -16,9 +16,7 @@ class Larsoft(CMakePackage, FnalGithubPackage):
     homepage = "https://larsoft.org"
     version_patterns = ["v09_00_00", "09.85.00"]
 
-    version(
-        "09.90.01.01", sha256="cd2cc90aad51cd4698853d7ee1922a407f2b05a0788d60f7b16f555fe50b886a"
-    )
+    version("09.90.01", sha256="93dd9ac43a6b21b73e59d9c31a59a3c2037a845348cee4c11add74eb01bd76a0")
     version("develop", branch="develop", get_full_repo=True)
 
     cxxstd_variant("17", "20", default="17")
@@ -30,6 +28,7 @@ class Larsoft(CMakePackage, FnalGithubPackage):
 
     depends_on("cetmodules", type="build")
 
+    depends_on("larfinder")
     depends_on("larsoftobj")
     depends_on("larsoft-data")
     depends_on("larana")

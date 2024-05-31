@@ -17,6 +17,7 @@ class Larpandora(CMakePackage, FnalGithubPackage):
     version(
         "09.22.05.01", sha256="6d63211e74842fe3de783078733092f082df84be7a384b6d17cc42ed61eca33e"
     )
+    version("09.22.05", sha256="3c9f4bbbfe7b1653ccf142ee0f5a3437610733bd0efaaf0a413d56f503ae7a5f")
     version("develop", branch="develop", get_full_repo=True)
 
     cxxstd_variant("17", "20", default="17")
@@ -50,7 +51,7 @@ class Larpandora(CMakePackage, FnalGithubPackage):
     def cmake_args(self):
         return [
             self.define_from_variant("CMAKE_CXX_STANDARD", "cxxstd"),
-            self.define_from_variant(
+            self.define(
                 "CMAKE_PREFIX_PATH", self.spec["py-torch"].package.cmake_prefix_paths[0]
             ),
             self.define("IGNORE_ABSOLUTE_TRANSITIVE_DEPENDENCIES", True),
