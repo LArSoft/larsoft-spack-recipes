@@ -16,14 +16,23 @@ class Larsoft(CMakePackage, FnalGithubPackage):
     homepage = "https://larsoft.org"
     version_patterns = ["v09_00_00", "09.85.00"]
 
+    version("10.00.01", sha256="e8031eb61d5b7da66d20884cf23f1de007c109ecff28d3e000db8175082ad966")
+    version("10.00.00", sha256="02f11cbbd668c801c1e18bc5c796eb5fe6dfef1dcd39f2c77672f468c58b3121")
+    version("09.93.00", sha256="71aec2833eb14cea7a75051f2127c9b1af43638b4b0e71c2e3964bdacf2a2c04")
     version("09.90.01", sha256="93dd9ac43a6b21b73e59d9c31a59a3c2037a845348cee4c11add74eb01bd76a0")
     version("develop", branch="develop", get_full_repo=True)
 
     cxxstd_variant("17", "20", default="17")
     variant(
         "eventdisplay",
-        default=False,
+        default=True,
         description="Include lareventdisplay and root/geant4 with opengl and x.",
+    )
+
+    variant(
+        "tensorflow",
+        default=False,
+        description="Include larrecodnn and larsimdnn that depend on tensorflow",
     )
 
     depends_on("cetmodules", type="build")
@@ -35,7 +44,6 @@ class Larsoft(CMakePackage, FnalGithubPackage):
     depends_on("larexamples")
     depends_on("larpandora")
     depends_on("larreco")
-    depends_on("larrecodnn")
     depends_on("larsimrad")
     depends_on("larwirecell")
 
@@ -49,9 +57,18 @@ class Larsoft(CMakePackage, FnalGithubPackage):
         depends_on("larpandoracontent ~monitoring")
         depends_on("root ~opengl~x")
 
+    with when("+tensorflow"):
+        depends_on("larrecodnn")
+        depends_on("larsimdnn")
+
     def patch(self):
         with when("@:09.90.01.01 ~eventdisplay"):
             filter_file(r"find_package\( *lareventdisplay.*", "", "CMakeLists.txt")
+
+    def patch(self):
+        with when("~tensorflow"):
+            filter_file(r"find_package\( *larrecodnn.*", "", "CMakeLists.txt")
+            filter_file(r"find_package\( *larsimdnn.*", "", "CMakeLists.txt")
 
     @run_after("install")
     def rename_bin_python(self):

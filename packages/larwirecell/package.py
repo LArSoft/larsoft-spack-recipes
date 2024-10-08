@@ -13,6 +13,7 @@ class Larwirecell(CMakePackage, FnalGithubPackage):
     repo = "LArSoft/larwirecell"
     version_patterns = ["v09_00_00", "09.18.00"]
 
+    version("09.18.08", sha256="abcbc8df882045a0bb1f851a279c32c8efb9f4f6c2d5901a89c17fdc0b9ca230")
     version("09.18.04", sha256="f932e70776681fb75ca39e9e2cc709321ca5689a3bbfc229c1b67921c6e585b9")
     version("develop", branch="develop", get_full_repo=True)
 
