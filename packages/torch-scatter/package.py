@@ -50,5 +50,8 @@ class TorchScatter(CMakePackage):
                 env.set("FORCE_CUDA", 0)
                 env.set("FORCE_CPU", 1)
 
-        env.prepend_path("CMAKE_PREFIX_PATH", "{0}".format(self.spec["py-torch"].package.cmake_prefix_paths[0]))
+    @property
+    def cmake_prefix_paths(self):
+        return "{0}".format(self.spec["py-torch"].package.cmake_prefix_paths[0])
+
 

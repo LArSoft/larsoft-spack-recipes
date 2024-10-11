@@ -45,10 +45,10 @@ class Larpandoracontent(CMakePackage, FnalGithubPackage):
             self.define_from_variant("CMAKE_CXX_STANDARD", "cxxstd"),
             self.define("CMAKE_MODULE_PATH", f"{self.spec['pandora'].prefix}/cmakemodules"),
             self.define_from_variant("PANDORA_MONITORING", "monitoring"),
-            self.define(
-                "CMAKE_PREFIX_PATH",
-                "{0}/lib/python{1}/site-packages/torch".format(
-                    self.spec["py-torch"].prefix, self.spec["python"].version.up_to(2)
-                ),
-            ),
         ]
+
+    @property
+    def cmake_prefix_paths(self)
+        return "{0}/lib/python{1}/site-packages/torch".format(
+                    self.spec["py-torch"].prefix, self.spec["python"].version.up_to(2)
+                )

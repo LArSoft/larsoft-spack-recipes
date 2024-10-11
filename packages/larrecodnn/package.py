@@ -56,16 +56,16 @@ class Larrecodnn(CMakePackage, FnalGithubPackage):
         return [
             self.define_from_variant("CMAKE_CXX_STANDARD", "cxxstd"),
             self.define(
-                "CMAKE_PREFIX_PATH",
-                "{0}/lib/python{1}/site-packages/torch".format(
-                    self.spec["py-torch"].prefix, self.spec["python"].version.up_to(2)
-                ),
-            ),
-            self.define(
                 "DELAUNATOR_INC",
                 self.spec["delaunator-cpp"].prefix.include
             ),
         ]
+
+    @property
+    def cmake_prefix_paths(self):
+        return "{0}/lib/python{1}/site-packages/torch".format(
+                    self.spec["py-torch"].prefix, self.spec["python"].version.up_to(2)
+                )
 
     @sanitize_paths
     def setup_build_environment(self, env):
