@@ -14,6 +14,7 @@ class Lardata(CMakePackage, FnalGithubPackage):
     repo = "LArSoft/lardata"
     version_patterns = ["v09_00_00", "09.16.00"]
 
+    version("09.17.00", sha256="040d2dc31a0fd842c79d52442e8ab779f0b92873e5e2ebcd5ef50e6a716d97aa")
     version("09.16.03", sha256="2a0eff1beaab479f0603df7be676ab47edd61f24787da0eef66febc168986595")
     version("develop", branch="develop", get_full_repo=True)
 

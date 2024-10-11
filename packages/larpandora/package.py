@@ -47,14 +47,17 @@ class Larpandora(CMakePackage, FnalGithubPackage):
     depends_on("pandorasdk")
     depends_on("py-torch")
     depends_on("root")
+    depends_on("clhep")
+    depends_on("cetmodules")
+
+    @property
+    def cmake_prefix_paths(self):
+        return [self.spec["py-torch"].package.cmake_prefix_paths[0]]
 
     @cmake_preset
     def cmake_args(self):
         return [
             self.define_from_variant("CMAKE_CXX_STANDARD", "cxxstd"),
-            self.define(
-                "CMAKE_PREFIX_PATH", self.spec["py-torch"].package.cmake_prefix_paths[0]
-            ),
             self.define("IGNORE_ABSOLUTE_TRANSITIVE_DEPENDENCIES", True),
         ]
 

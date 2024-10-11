@@ -33,6 +33,10 @@ class Lardataobj(CMakePackage, FnalGithubPackage):
     depends_on("messagefacility")
     depends_on("root")
 
+    def patch(self):
+        for file in ['lardataobj/Simulation/CMakeLists.txt', 'lardataobj/AnalysisBase/CMakeLists.txt']:
+            filter_file('nusimdata::SimulationBase', 'nusimdata::SimulationBase dk2nu::Tree', file)
+
     @cmake_preset
     def cmake_args(self):
         return [self.define_from_variant("CMAKE_CXX_STANDARD", "cxxstd")]

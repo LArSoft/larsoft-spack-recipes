@@ -40,6 +40,14 @@ class Larexamples(CMakePackage, FnalGithubPackage):
     depends_on("nusimdata")
     depends_on("root")
 
+    def patch(self):
+        files = ["test/Algorithms/TotallyCheatTracks/CMakeLists.txt",
+             "larexamples/AnalysisExample/CMakeLists.txt",
+             "larexamples/Algorithms/TotallyCheatTracks/CheatTrackData/CMakeLists.txt",
+             "larexamples/Algorithms/TotallyCheatTracks/CMakeLists.txt"]
+        for file in files:
+            filter_file("nusimdata::SimulationBase", "nusimdata::SimulationBase dk2nu::Tree", file)
+
     @cmake_preset
     def cmake_args(self):
         return [self.define_from_variant("CMAKE_CXX_STANDARD", "cxxstd")]
