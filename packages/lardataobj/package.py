@@ -33,6 +33,8 @@ class Lardataobj(CMakePackage, FnalGithubPackage):
     depends_on("messagefacility")
     depends_on("root")
 
+    patch("lardataobjAnalysisBase_dict.patch", level=0)
+
     @cmake_preset
     def cmake_args(self):
         return [self.define_from_variant("CMAKE_CXX_STANDARD", "cxxstd")]
