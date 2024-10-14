@@ -73,7 +73,6 @@ class Larrecodnn(CMakePackage, FnalGithubPackage):
                     self.spec["py-torch"].prefix, self.spec["python"].version.up_to(2)
                 )
 
-    @sanitize_paths
     def setup_build_environment(self, env):
         env.set("TRITON_DIR", self.spec["triton"].prefix.lib)
         with when("+tensorflow"):
