@@ -17,6 +17,11 @@ class Larrecodnn(CMakePackage, FnalGithubPackage):
     version("develop", branch="develop", get_full_repo=True)
 
     cxxstd_variant("17", "20", default="17")
+    variant(
+        "tensorflow",
+        default=False,
+        description="Include py-tensorflow",
+    )
 
     depends_on("cetmodules", type="build")
     depends_on("larfinder", type="build")
@@ -43,7 +48,8 @@ class Larrecodnn(CMakePackage, FnalGithubPackage):
     depends_on("nurandom")
     depends_on("nusimdata")
     depends_on("protobuf", when="@:09.23.00")
-    depends_on("py-tensorflow")
+    with when("+tensorflow"):
+        depends_on("py-tensorflow")
     depends_on("py-torch")
     depends_on("torch-scatter")
     depends_on("root")
@@ -70,16 +76,17 @@ class Larrecodnn(CMakePackage, FnalGithubPackage):
     @sanitize_paths
     def setup_build_environment(self, env):
         env.set("TRITON_DIR", self.spec["triton"].prefix.lib)
-        env.set("TENSORFLOW_DIR", self.spec["py-tensorflow"].prefix.lib)
-        env.set(
-            "TENSORFLOW_INC",
-            join_path(
-                self.spec["py-tensorflow"].prefix.lib,
-                "python{0}/site-packages/tensorflow/include".format(
-                    self.spec["python"].version.up_to(2)
+        with when("+tensorflow"):
+            env.set("TENSORFLOW_DIR", self.spec["py-tensorflow"].prefix.lib)
+            env.set(
+                "TENSORFLOW_INC",
+                join_path(
+                    self.spec["py-tensorflow"].prefix.lib,
+                    "python{0}/site-packages/tensorflow/include".format(
+                        self.spec["python"].version.up_to(2)
+                    ),
                 ),
-            ),
-        )
+            )
 
     @sanitize_paths
     def setup_run_environment(self, env):
