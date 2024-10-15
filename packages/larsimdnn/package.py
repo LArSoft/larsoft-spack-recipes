@@ -13,6 +13,7 @@ class Larsimdnn(CMakePackage, FnalGithubPackage):
     repo = "LArSoft/larsimdnn"
     version_patterns = ["v09_00_00", "09.05.18"]
 
+    version("09.06.11", sha256="b220bbc3ee016ceb137a79a1445ec02a5ffc7ff4737e1c58b8b284c15d17a3b9")
     version("09.06.05", sha256="ecd14549917d696332bc05c3b4c23bdf263a99b5e76a3341b19142be5482bbad")
     version("develop", branch="develop", get_full_repo=True)
 
@@ -33,22 +34,21 @@ class Larsimdnn(CMakePackage, FnalGithubPackage):
     depends_on("lardataobj")
     depends_on("larevt", when="@:09.06.05.01")
     depends_on("larsim")
-    with when("+tensorflow"):
-        depends_on("py-tensorflow")
+    depends_on("py-tensorflow", when="+tensorflow")
 
     @cmake_preset
     def cmake_args(self):
         return [self.define_from_variant("CMAKE_CXX_STANDARD", "cxxstd")]
 
+    @when("+tensorflow")
     def setup_build_environment(self, env):
-        with when("+tensorflow"):
-            env.set(
-                "TENSORFLOW_INC",
-                join_path(
-                    self.spec["py-tensorflow"].prefix.lib,
-                    "python%s/site-packages/tensorflow/include" % self.spec["python"].version.up_to(2),
-                ),
-            )
+        env.set(
+            "TENSORFLOW_INC",
+            join_path(
+                self.spec["py-tensorflow"].prefix.lib,
+                "python%s/site-packages/tensorflow/include" % self.spec["python"].version.up_to(2),
+            ),
+        )
 
     @sanitize_paths
     def setup_run_environment(self, env):
