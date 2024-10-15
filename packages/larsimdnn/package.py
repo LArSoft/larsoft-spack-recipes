@@ -40,7 +40,6 @@ class Larsimdnn(CMakePackage, FnalGithubPackage):
     def cmake_args(self):
         return [self.define_from_variant("CMAKE_CXX_STANDARD", "cxxstd")]
 
-    @sanitize_paths
     def setup_build_environment(self, env):
         with when("+tensorflow"):
             env.set(
