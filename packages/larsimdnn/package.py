@@ -13,6 +13,7 @@ class Larsimdnn(CMakePackage, FnalGithubPackage):
     repo = "LArSoft/larsimdnn"
     version_patterns = ["v09_00_00", "09.05.18"]
 
+    version("10.00.02", sha256="6199d7c9d6edb7cfcaae3ea5612a2b76501cc4617ffc9f7385aae8516996fcc1")
     version("09.06.11", sha256="b220bbc3ee016ceb137a79a1445ec02a5ffc7ff4737e1c58b8b284c15d17a3b9")
     version("09.06.05", sha256="ecd14549917d696332bc05c3b4c23bdf263a99b5e76a3341b19142be5482bbad")
     version("develop", branch="develop", get_full_repo=True)
