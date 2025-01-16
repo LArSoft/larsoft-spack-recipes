@@ -5,21 +5,17 @@
 
 
 from spack.package import *
+from spack.pkg.fnal_art.fnal_github_package import *
 
 
-class Larfinder(CMakePackage):
+class Larfinder(CMakePackage, FnalGithubPackage):
     """Common cmake bits for larsoft"""
 
-    homepage = "https://github.com/LArSoft"
-    url = "https://github.com/LArSoft/larfinder/archive/refs/tags/LARSOFT_SUITE_v09_90_01.tar.gz"
-
+    repo = "LArSoft/larfinder"
+    version_patterns = ["v09_00_01"]
     maintainers = ["marcmengel"]
 
-    def url_for_version(self, version):
-        html_prefix = "https://github.com/LArSoft/larfinder/archive/refs/tags"
-        return f"{html_prefix}/LARSOFT_SUITE_v{version.underscored}.tar.gz"
-
-    version("09.90.01", sha256="129d20e548eec79292dc43567aa200a65c2e48385f00000f3c54bd1e20152761")
+    version("09.00.01", sha256="5edbc7eb8a8aa17b4524b72cc1f8ab03691ea730511db0c6167731a9c2e1d659")
     version("develop", branch="develop", get_full_repo=True)
 
     depends_on("cetmodules", type="build")

@@ -27,7 +27,7 @@ class Larsim(CMakePackage, FnalGithubPackage):
     depends_on("art")
     depends_on("art-root-io")
     depends_on("artg4tk")
-    depends_on("boost")
+    depends_on("boost+math")
     depends_on("cetlib")
     depends_on("cetlib-except")
     depends_on("clhep")
