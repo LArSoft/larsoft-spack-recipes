@@ -23,6 +23,7 @@ class Larexamples(CMakePackage, FnalGithubPackage):
     cxxstd_variant("17", "20", default="17")
 
     depends_on("cetmodules", type="build")
+    depends_on("larsoft-data", type=("build", "test"))
 
     depends_on("art")
     depends_on("art-root-io")
