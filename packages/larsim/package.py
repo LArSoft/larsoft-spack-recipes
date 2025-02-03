@@ -45,6 +45,7 @@ class Larsim(CMakePackage, FnalGithubPackage):
     depends_on("lardataobj")
     depends_on("lardata")
     depends_on("larevt")
+    depends_on("larsoft-data")
     depends_on("log4cpp")
     depends_on("marley")
     depends_on("messagefacility")
