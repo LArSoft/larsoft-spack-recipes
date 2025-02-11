@@ -15,6 +15,8 @@ class Larg4(CMakePackage, FnalGithubPackage):
     repo = "LArSoft/larg4"
     version_patterns = ["v09_00_00", "09.18.00"]
 
+    version("10.00.04", sha256="126814c20b77359c28aedd3b6150c9fb8677bb16a7a8c1ee77e14a8ae36d3802")
+    version("10.00.03", sha256="1ffeb259e2986e185c9bef4c8ce08268c68d46938784e43745cbbe3a8a86c60e")
     version("10.00.01", sha256="89f414f6199ec8c0ca18ccb4c15ae0e4d89e5ffe4436ab3d1fe85a2610486955")
     version("09.19.03", sha256="0359f862e4a9a95f5dd1f70e37d6d577c2dc13458adf0060d13b01da30b1d751")
     version("develop", branch="develop", get_full_repo=True)
