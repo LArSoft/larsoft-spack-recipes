@@ -1,0 +1,20 @@
+diff --git a/larwirecell/Components/OpFlashSource.cxx b/larwirecell/Components/OpFlashSource.cxx
+index 124056e..e0fced4 100644
+--- a/larwirecell/Components/OpFlashSource.cxx
++++ b/larwirecell/Components/OpFlashSource.cxx
+@@ -51,7 +51,7 @@ void OpFlashSource::configure(const WireCell::Configuration& cfg)
+ 
+ void OpFlashSource::visit(art::Event& event)
+ {
+-  log->debug("OpFlashSource::visit {}", m_inputTag);
++  log->debug("OpFlashSource::visit {}", m_inputTag.encode());
+   art::Handle<std::vector<recob::OpFlash>> opflashes;
+   event.getByLabel(m_inputTag, opflashes);
+   if (!opflashes.isValid()) {
+@@ -96,4 +96,4 @@ bool OpFlashSource::operator()(WireCell::ITensorSet::pointer& tensorset)
+   tensorset = m_tensorsets.front();
+   m_tensorsets.pop_front();
+   return true;
+-}
+\ No newline at end of file
++}

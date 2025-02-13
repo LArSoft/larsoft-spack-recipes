@@ -24,6 +24,8 @@ class Larwirecell(CMakePackage, FnalGithubPackage):
 
     cxxstd_variant("17", "20", default="17")
 
+    patch('v10.00.02.patch', when="@10.00.02")
+    
     depends_on("cetmodules", type="build")
 
     depends_on("art")
