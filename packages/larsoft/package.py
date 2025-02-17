@@ -5,7 +5,6 @@
 
 import os
 
-from spack import *
 from spack.package import *
 from spack.pkg.fnal_art.fnal_github_package import *
 
@@ -15,7 +14,7 @@ class Larsoft(CMakePackage, FnalGithubPackage):
 
     repo = "LArSoft/larsoft"
     homepage = "https://larsoft.org"
-    version_patterns = ["v09_00_00", "09.85.00"]
+    version_patterns = ["09.85.00"]
 
     version("10.04.00", sha256="2bf1abd0864dbfdc042eb5e2e7231cbb2241a6c335dd495b53a7d2f914229bcd")
     version("10.03.01", sha256="823a8870a15e910599e79dd071efd470c81d05efbff2ec32bc186d7804fdaa42")
@@ -44,7 +43,6 @@ class Larsoft(CMakePackage, FnalGithubPackage):
 
     depends_on("larfinder")
     depends_on("larg4")
-    depends_on("larsoftobj")
     depends_on("larsoft-data")
     depends_on("larana")
     depends_on("larexamples")
@@ -75,7 +73,6 @@ class Larsoft(CMakePackage, FnalGithubPackage):
         with when("@:09.90.01.01 ~eventdisplay"):
             filter_file(r"find_package\( *lareventdisplay.*", "", "CMakeLists.txt")
 
-    def patch(self):
         with when("~tensorflow"):
             filter_file(r"find_package\( *larrecodnn.*", "", "CMakeLists.txt")
             filter_file(r"find_package\( *larsimdnn.*", "", "CMakeLists.txt")
