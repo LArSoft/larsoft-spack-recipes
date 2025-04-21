@@ -46,6 +46,7 @@ class Larsimdnn(CMakePackage, FnalGithubPackage):
 
     @when("+tensorflow")
     def setup_build_environment(self, env):
+        env.set("TENSORFLOW_DIR", self.spec["py-tensorflow"].prefix.lib)
         env.set(
             "TENSORFLOW_INC",
             join_path(
