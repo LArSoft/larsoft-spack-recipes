@@ -15,6 +15,7 @@ class Larcorealg(CMakePackage, FnalGithubPackage):
     repo = "LArSoft/larcorealg"
     version_patterns = ["v09_00_00", "09.13.00"]
 
+    version("10.00.02", sha256="0ac325feca294c4fddd77a444aabdedd6f6351dd68632c5ec2b955aba21b6f1a")
     version("10.00.00", sha256="1c91112a634daaad55ddee5fdbf1a7eb1b0ffb4a9d0ababc90b47d51c57b9cc9")
     version("09.13.02", sha256="f386d879d10633123963577ef29a563777051ce2b5796a73d69789dff869af98")
     version("09.13.01", sha256="d339eba110757814c8522a92d421e2ae3aa6842d5088fd0440aa3eb177324e35")

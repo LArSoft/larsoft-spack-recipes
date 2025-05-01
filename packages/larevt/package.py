@@ -15,6 +15,8 @@ class Larevt(CMakePackage, FnalGithubPackage):
     repo = "LArSoft/larevt"
     version_patterns = ["v09_00_00", "09.10.00"]
 
+    version("10.00.08", sha256="026eeabce2b01c15fcd90effa6e05a2ebe125709b2b09d7ef5c1732eb09a5241")
+    version("10.00.07", sha256="bafaf49674522515109e89321f13f1157e27b32999e487f4e48aac1b3bb0ff18")
     version("10.00.04", sha256="750db876087641ca736d7465e86fa6dac43a1493ef3a6e9c8e030c4d8eb615bd")
     version("10.00.03", sha256="8456cca33b8437d234ed3c4c7c8d7ea677da77805a683bfc3111a0e6a2243992")
     version("10.00.01", sha256="eb90abf975f61a4fd89ec98d42ffb02f3b4c79f2940e317dcb79498b4184cf0e")

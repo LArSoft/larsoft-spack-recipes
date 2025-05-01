@@ -14,6 +14,9 @@ class Larpandoracontent(CMakePackage, FnalGithubPackage):
     repo = "LArSoft/larpandoracontent"
     version_patterns = ["v02_07_02", "04.07.01"]
 
+    version("04.15.01", sha256="a0d89e0a163f600a0646e9db9a2b04363467d8e6a955eb5e894fc3f65285b5ca")
+    version("04.15.00", sha256="144e40248e9826b093eebf0ebad990f1bb3e37f25e6a4678ace9c05f30a82d7e")
+    version("04.14.01", sha256="4e9565801dc780c7da7ea09194c71ce31822211bd67fa58ff07eecf2789ea921")
     version("04.12.00", sha256="eb2490808f88fdb0934b7725b6baef8ca04bced5e27d6adc47e3b5497b6d9dbb")
     version("04.11.02", sha256="9188a37a011bc2984597621cf08e747495a08acc29856de7d135adad5e446223")
     version("04.10.00", sha256="6d09505f29835dd6f1c994491a67f4f04f06a5eb7724c9fe4f5364d2ff28ec32")

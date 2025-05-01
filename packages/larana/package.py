@@ -15,6 +15,9 @@ class Larana(CMakePackage, FnalGithubPackage):
     repo = "LArSoft/larana"
     version_patterns = ["v09_00_00", "09.14.19"]
 
+    version("10.00.16", sha256="0ac8413d3d2c9332886a80659a764b680d104260a2773056938bad2cd4278b57")
+    version("10.00.15", sha256="e1ed411bd51b15552faf1e0cd882e08b0fd19f13286bd5f31c3cae76641ef21e")
+    version("10.00.14", sha256="b9a0e437aeeb0ac56db2dfcc05c24fca8ea5b4693400199d307cc9d4bc09a6fc")
     version("10.00.07", sha256="bd08f4b0115ae68622d2e5037ee57e98479dca8314c69e14cd98ceaaf0f7e5b8")
     version("10.00.06", sha256="474fa3e1cdb83fa55a2f3a4fbfe3dab7a96e6a3961155202e6b62e4079b4a317")
     version("10.00.02", sha256="67ee61f9e2cfb1878199a1580f6f2fca119efc74babed8edf76ee9e58464b6e3")

@@ -14,6 +14,9 @@ class Larwirecell(CMakePackage, FnalGithubPackage):
     repo = "LArSoft/larwirecell"
     version_patterns = ["v09_00_00", "09.18.00"]
 
+    version("10.01.10", sha256="a8342af4db82e4615ae1347c9371b816362edc8181044e3e6e72164b2b97cc3f")
+    version("10.01.09", sha256="8507d5ca127a614022a705a2df217a680c734430debd2411f813e82b617b479a")
+    version("10.01.08", sha256="f9dfcb086237ef6d6378aa296e25adf7ca003f57303f82863ea853b37e3d90e7")
     version("10.01.02", sha256="1315701d1213938e157b8bf00adfa2d9882a48e281d52df887cbefbc90a04fdc")
     version("10.01.01", sha256="4afa459ee835136a6136a06c989dc442f2a767651a4ca76e0114dd155f35c222")
     version("10.01.00", sha256="ff47c0d6669682776461a36dec4b0831cf253cb0187e31ada21f8e61b06475a8")
@@ -25,7 +28,7 @@ class Larwirecell(CMakePackage, FnalGithubPackage):
     cxxstd_variant("17", "20", default="17")
 
     patch('v10.00.02.patch', when="@10.00.02")
-    
+
     depends_on("cetmodules", type="build")
 
     depends_on("art")
