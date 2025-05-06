@@ -38,6 +38,7 @@ class Larwirecell(CMakePackage, FnalGithubPackage):
     depends_on("lardataalg", when="@:09.18.04")
     depends_on("lardata")
     depends_on("larevt")
+    depends_on("larsim")
     depends_on("root")
     depends_on("wirecell")
 
