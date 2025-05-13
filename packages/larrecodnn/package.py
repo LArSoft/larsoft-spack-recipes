@@ -66,6 +66,12 @@ class Larrecodnn(CMakePackage, FnalGithubPackage):
 
     def patch(self):
         filter_file("LANGUAGES CXX", "LANGUAGES CXX C", "CMakeLists.txt")
+        filter_file("cet_make_library\(SOURCE",
+            "find_package(protobuf QUIET)\ncet_make_library(SOURCE",
+            "larrecodnn/ImagePatternAlgs/NuSonic/Triton/CMakeLists.txt")
+        filter_file("PUBLIC",
+            "PUBLIC\nprotobuf::libprotobuf",
+            "larrecodnn/ImagePatternAlgs/NuSonic/Triton/CMakeLists.txt")
 
     @cmake_preset
     def cmake_args(self):
