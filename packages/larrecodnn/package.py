@@ -31,6 +31,9 @@ class Larrecodnn(CMakePackage, FnalGithubPackage):
         description="Include py-tensorflow",
     )
 
+    depends_on("c", type="build")
+    depends_on("cxx", type="build")
+
     depends_on("cetmodules", type="build")
     depends_on("larfinder", type="build")
 

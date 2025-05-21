@@ -18,6 +18,9 @@ class TorchScatter(CMakePackage):
 
     version("2.1.2", sha256="6f375dbc9cfe03f330aa29ea553e9c7432e9b040d039b041f08bf05df1a8bf37")
 
+    depends_on("c", type="build")
+    depends_on("cxx", type="build")
+
     depends_on("python", type=("build", "link", "run"))
     depends_on("py-setuptools", type="build")
 

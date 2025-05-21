@@ -17,6 +17,9 @@ class DelaunatorCpp(Package):
     version("0.1.0", sha256="1a532388449ca4ff41c9ca4ebf3557b624ca4d99497c47be3d1565bee4246d13")
 
 
+    depends_on("c", type="build")
+    depends_on("cxx", type="build")
+
     def install(self, spec, prefix):
         mkdirp("{0}/include".format(prefix))
         install_tree(

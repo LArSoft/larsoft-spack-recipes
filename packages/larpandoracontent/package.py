@@ -28,6 +28,9 @@ class Larpandoracontent(CMakePackage, FnalGithubPackage):
 
     variant("monitoring", default=True, description="Enable PandoraMonitoring when building.")
 
+    depends_on("c", type="build")
+    depends_on("cxx", type="build")
+
     depends_on("cetmodules", type="build")
 
     depends_on("eigen")
