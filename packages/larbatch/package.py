@@ -17,6 +17,9 @@ class Larbatch(CMakePackage, FnalGithubPackage):
     version("01.59.04", sha256="8158d2e1b5f208d1014b3745c347d49e3e3449c240842af5361c67fd3b269dff")
     version("develop", branch="develop", get_full_repo=True)
 
+    depends_on("c", type="build")
+    depends_on("cxx", type="build")
+
     depends_on("sam-web-client", type=("run"))
     depends_on("python", type=("run"))
     depends_on("cetmodules", type="build")

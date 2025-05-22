@@ -29,6 +29,9 @@ class Larwirecell(CMakePackage, FnalGithubPackage):
 
     patch('v10.00.02.patch', when="@10.00.02")
 
+    depends_on("c", type="build")
+    depends_on("cxx", type="build")
+
     depends_on("cetmodules", type="build")
 
     depends_on("art")

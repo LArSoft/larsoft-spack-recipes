@@ -26,6 +26,9 @@ class Lardata(CMakePackage, FnalGithubPackage):
 
     cxxstd_variant("17", "20", default="17")
 
+    depends_on("c", type="build")
+    depends_on("cxx", type="build")
+
     depends_on("cetmodules", type="build")
     depends_on("canvas-root-io", type="build")  # For dictionary-building in tests
 

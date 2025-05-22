@@ -42,6 +42,9 @@ class Larsoft(CMakePackage, FnalGithubPackage):
         description="Include larrecodnn and larsimdnn that depend on tensorflow",
     )
 
+    depends_on("c", type="build")
+    depends_on("cxx", type="build")
+
     depends_on("cetmodules", type="build")
 
     depends_on("larfinder")

@@ -29,6 +29,9 @@ class Larana(CMakePackage, FnalGithubPackage):
 
     depends_on("cetmodules", type="build")
 
+    depends_on("c", type="build")
+    depends_on("cxx", type="build")
+
     depends_on("art")
     depends_on("art-root-io")
     depends_on("canvas")
