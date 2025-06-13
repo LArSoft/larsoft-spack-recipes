@@ -6,7 +6,7 @@
 from spack_repo.builtin.build_systems.bundle import BundlePackage
 from spack.package import *
 from spack_repo.builtin.build_systems.cmake import CMakePackage
-from spack_repo.fnal_art.packages.fnal_github_package.package import FnalGithubPackage, cxxstd_variant
+from spack_repo.fnal_art.packages.fnal_github_package.package import *
 
 
 def _dependencies_for(cxxstd):
