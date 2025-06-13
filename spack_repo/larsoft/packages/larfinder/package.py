@@ -6,7 +6,7 @@
 
 from spack.package import *
 from spack_repo.builtin.build_systems.cmake import CMakePackage
-from spack_repo.fnal_art.packages.fnal_github_package.package import FnalGithubPackage
+from spack_repo.fnal_art.packages.fnal_github_package.package import *
 
 
 class Larfinder(CMakePackage, FnalGithubPackage):
