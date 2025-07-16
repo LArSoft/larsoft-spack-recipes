@@ -62,7 +62,7 @@ class Larrecodnn(CMakePackage, FnalGithubPackage):
     depends_on("protobuf", when="@:09.23.00")
     depends_on("py-tensorflow", when="+tensorflow")
     depends_on("py-torch")
-    depends_on("torch-scatter")
+    depends_on("py-torch-scatter")
     depends_on("root")
     depends_on("tbb")
     depends_on("triton")
