@@ -1,0 +1,18 @@
+diff --git a/larcorealg/CoreUtils/makeValueIndex.h b/larcorealg/CoreUtils/makeValueIndex.h
+index 2074776..8f4a15a 100644
+--- a/larcorealg/CoreUtils/makeValueIndex.h
++++ b/larcorealg/CoreUtils/makeValueIndex.h
+@@ -60,9 +60,12 @@ namespace util {
+   template <typename Coll>
+   auto makeValueIndex(Coll const& coll)
+   {
++#if (__cplusplus < 202000L)
+     return makeValueIndex(coll, util::pre_std::identity());
++#else
++    return makeValueIndex(coll, std::identity());
++#endif
+   }
+-
+ } // namespace util
+ 
+ //------------------------------------------------------------------------------

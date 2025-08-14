@@ -24,6 +24,8 @@ class Larcorealg(CMakePackage, FnalGithubPackage):
 
     cxxstd_variant("17", "20", default="17")
 
+    patch("cxx20.patch", when="cxxstd=20")
+
     depends_on("c", type="build")
     depends_on("cxx", type="build")
 
