@@ -13,6 +13,7 @@ class Larrecodnn(CMakePackage, FnalGithubPackage):
     """Larrecodnn"""
 
     repo = "LArSoft/larrecodnn"
+    git = "https://github.com/%s.git" % repo
     version_patterns = ["v09_00_00", "09.21.21"]
 
     version("10.01.15", sha256="75101a745eb655ad1f88ba0b5f112d12454911501b24f210a038b295368697e5")

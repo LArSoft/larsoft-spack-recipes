@@ -12,6 +12,7 @@ class Larbatch(CMakePackage, FnalGithubPackage):
     """package for batch job submission featuring project.py"""
 
     repo = "LArSoft/larbatch"
+    git = "https://github.com/%s.git" % repo
     version_patterns = ["v01_00_00"]
 
     version("01.61.01", sha256="5a0e42d8b0960dacedb5d6e47c41d8fce624b6442eb3751f8cbc17e4cfc67ec8")

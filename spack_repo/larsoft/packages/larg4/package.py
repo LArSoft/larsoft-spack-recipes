@@ -14,6 +14,7 @@ class Larg4(CMakePackage, FnalGithubPackage):
     """Larg4"""
 
     repo = "LArSoft/larg4"
+    git = "https://github.com/%s.git" % repo
     version_patterns = ["v09_00_00", "09.18.00"]
 
     version("10.00.12", sha256="561a02ea708fd4f1255717863f587c009b68dfe6f51f301a3f385ce1edb5ed3d")

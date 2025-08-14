@@ -13,6 +13,7 @@ class Larsimrad(CMakePackage, FnalGithubPackage):
     """larsimrad"""
 
     repo = "LArSoft/larsimrad"
+    git = "https://github.com/%s.git" % repo
     version_patterns = ["v09_00_00", "09.08.18"]
 
     version("10.00.17", sha256="2e0f15009971e08e846882b175dc69b3e60f88d220fd2eada5379ed2eb261a0e")

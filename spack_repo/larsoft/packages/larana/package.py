@@ -14,6 +14,7 @@ class Larana(CMakePackage, FnalGithubPackage):
     """Larana"""
 
     repo = "LArSoft/larana"
+    git = "https://github.com/%s.git" % repo
     version_patterns = ["v09_00_00", "09.14.19"]
 
     version("10.00.21", sha256="c62f4c88e92d10bafa9d52fe086df40e928ac00041ceaa8dd4896a452ea39665")

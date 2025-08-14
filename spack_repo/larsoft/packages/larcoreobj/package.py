@@ -13,6 +13,7 @@ class Larcoreobj(CMakePackage, FnalGithubPackage):
     """Larcoreobj"""
 
     repo = "LArSoft/larcoreobj"
+    git = "https://github.com/%s.git" % repo
     version_patterns = ["v09_00_00", "09.10.00"]
 
     version("10.00.00", sha256="a6e58cc8e136b05778e8a8bc9b4bdedd4b62a68871aece28a65154ddfcef01a9")
