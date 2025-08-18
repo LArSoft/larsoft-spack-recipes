@@ -13,7 +13,7 @@ class Larvecutils(CMakePackage, FnalGithubPackage):
     """Larvecutils"""
 
     repo = "LArSoft/larvecutils"
-    git = "https://github.com/%s.git" % repo
+    git = "https://github.com/%s" % repo
     version_patterns = ["v09_00_00"]
 
     version("09.04.02", sha256="823c9496bced1f6e298cc7dfab2ca1c8d718e37e551f333329667bbc9632fcc6")

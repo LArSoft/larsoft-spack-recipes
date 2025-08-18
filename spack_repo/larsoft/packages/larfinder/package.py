@@ -13,7 +13,7 @@ class Larfinder(CMakePackage, FnalGithubPackage):
     """Common cmake bits for larsoft"""
 
     repo = "LArSoft/larfinder"
-    git = "https://github.com/%s.git" % repo
+    git = "https://github.com/%s" % repo
     version_patterns = ["v09_00_01"]
     maintainers = ["marcmengel"]
 
