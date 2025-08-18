@@ -14,7 +14,7 @@ class Lardataobj(CMakePackage, FnalGithubPackage):
     """Lardataobj"""
 
     repo = "LArSoft/lardataobj"
-    git = "https://github.com/%s.git" % repo
+    git = "https://github.com/%s" % repo
     version_patterns = ["v09_00_00", "09.18.00"]
 
     version("10.02.00", sha256="13f7ce1e2cccfb6ca073cfb7731e103d0aed0cf112625253dc5c1094a36a1837")

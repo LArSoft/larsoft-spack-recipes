@@ -18,7 +18,7 @@ class Larsoftobj(BundlePackage, FnalGithubPackage):
     """Deprecated bundle package for art-independent LArSoft packages"""
 
     repo = "LArSoft/larsoftobj"
-    git = "https://github.com/%s.git" % repo
+    git = "https://github.com/%s" % repo
     version_patterns = ["09.35.00"]
 
     with default_args(deprecated=True):

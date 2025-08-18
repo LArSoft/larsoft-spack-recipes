@@ -13,7 +13,7 @@ class Larsimdnn(CMakePackage, FnalGithubPackage):
     """Larsim"""
 
     repo = "LArSoft/larsimdnn"
-    git = "https://github.com/%s.git" % repo
+    git = "https://github.com/%s" % repo
     version_patterns = ["v09_00_00", "09.05.18"]
 
     version("10.00.16", sha256="9634d85fcf0ec4e76cc542e80d4112007b294c648aa0b3863c1a6f5f17adedde")

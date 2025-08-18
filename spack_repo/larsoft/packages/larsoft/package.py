@@ -14,7 +14,7 @@ class Larsoft(CMakePackage, FnalGithubPackage):
     """Software for Liquid Argon time projection chambers"""
 
     repo = "LArSoft/larsoft"
-    git = "https://github.com/%s.git" % repo
+    git = "https://github.com/%s" % repo
     homepage = "https://larsoft.org"
     version_patterns = ["09.85.00"]
 

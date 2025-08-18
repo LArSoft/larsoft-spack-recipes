@@ -14,7 +14,7 @@ class Larevt(CMakePackage, FnalGithubPackage):
     """Larevt"""
 
     repo = "LArSoft/larevt"
-    git = "https://github.com/%s.git" % repo
+    git = "https://github.com/%s" % repo
     version_patterns = ["v09_00_00", "09.10.00"]
 
     version("10.00.11", sha256="7c15a795ad1f50f4d19057929f8bed2fbc36c8e621f5816d911c521d6353a9c8")
