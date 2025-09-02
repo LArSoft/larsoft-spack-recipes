@@ -17,6 +17,7 @@ class Larcore(CMakePackage, FnalGithubPackage):
     git = "https://github.com/%s" % repo
     version_patterns = ["v09_00_00", "09.11.00"]
 
+    version("10.00.03", sha256="25d2a9d5a2a3d10a5d65240fe2fc4f09920e37bb4b39e002f39f9588a414b9b7")
     version("10.00.02", sha256="f9a614d5882ff40b4f6de172054e225e17f0460b50c74e673a70d008b6083c05")
     version("10.00.00", sha256="be9c65b7a51d251ad167a1fcf0b51a11c0edcc992978a31c5fdedbcc2474c039")
     version("09.11.01", sha256="60c85fab1f622274d6750c6578d372ad5c6d0fd28a857e79c82bcfcd828c6b09")

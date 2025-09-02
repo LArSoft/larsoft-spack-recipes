@@ -16,6 +16,7 @@ class Larsimdnn(CMakePackage, FnalGithubPackage):
     git = "https://github.com/%s" % repo
     version_patterns = ["v09_00_00", "09.05.18"]
 
+    version("10.00.19", sha256="d3e1651ffe8127a6a7584faa297497a54264d6acaae207728b607c194b1c6196")
     version("10.00.16", sha256="9634d85fcf0ec4e76cc542e80d4112007b294c648aa0b3863c1a6f5f17adedde")
     version("10.00.15", sha256="e630b4a30451d1816b21766fabb9f7d366bf8da0fb0dac8c20505866d27dea9f")
     version("10.00.11", sha256="1654f0995347543c00baef1325030d75c141cc08e86b5f9bd055e2150d860f74")
@@ -31,7 +32,7 @@ class Larsimdnn(CMakePackage, FnalGithubPackage):
     cxxstd_variant("17", "20", default="17")
     variant(
         "tensorflow",
-        default=False,
+        default=True,
         description="Include py-tensorflow",
     )
 

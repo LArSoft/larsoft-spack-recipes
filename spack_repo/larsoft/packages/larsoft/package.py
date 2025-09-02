@@ -18,6 +18,7 @@ class Larsoft(CMakePackage, FnalGithubPackage):
     homepage = "https://larsoft.org"
     version_patterns = ["09.85.00"]
 
+    version("10.10.02", sha256="589c8fb41911494a8ebc3179c4610951e1067c6d1fe6e4765de250e6212ab2ed")
     version("10.09.00", sha256="2d2110de35bc8cb53764b2e219c4672473f3893635a09741c5a82b1c59744efb")
     version("10.08.03", sha256="110eeeecb197c2c52b8b1edd0666c3c846d378e173513e6b5b046fc49372725e")
     version("10.06.00.02", sha256="81086dca93b52c54d16d92959e87856ce0938aac9a13445d04ca072b8d94bae8")
@@ -43,7 +44,7 @@ class Larsoft(CMakePackage, FnalGithubPackage):
 
     variant(
         "tensorflow",
-        default=False,
+        default=True,
         description="Include larrecodnn and larsimdnn that depend on tensorflow",
     )
 
