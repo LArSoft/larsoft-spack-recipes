@@ -80,13 +80,28 @@ class Larrecodnn(CMakePackage, FnalGithubPackage):
 
     @cmake_preset
     def cmake_args(self):
-        return [
+        args = [
             self.define_from_variant("CMAKE_CXX_STANDARD", "cxxstd"),
             self.define(
                 "DELAUNATOR_INC",
                 self.spec["delaunator-cpp"].prefix.include
             ),
         ]
+        with when("+tensorflow"):
+            args.extend( [
+                self.define("TRITON_DIR", self.spec["triton"].prefix.lib),
+                self.define("TENSORFLOW_DIR",
+                            join_path(
+                                self.spec["py-tensorflow"].prefix.lib),
+                                "python{0}/site-packages/tensorflow".format(
+                                self.spec["python"].version.up_to(2))),
+                self.define("TENSORFLOW_INC",
+                            join_path(
+                                self.spec["py-tensorflow"].prefix.lib,
+                                "python{0}/site-packages/tensorflow/include".format(
+                                self.spec["python"].version.up_to(2)))),
+                ] )
+        return args
 
     @property
     def cmake_prefix_paths(self):
@@ -100,16 +115,18 @@ class Larrecodnn(CMakePackage, FnalGithubPackage):
     @when("+tensorflow")
     def setup_build_environment(self, env):
         env.set("TRITON_DIR", self.spec["triton"].prefix.lib)
-        env.set("TENSORFLOW_DIR", self.spec["py-tensorflow"].prefix.lib)
-        env.set(
-            "TENSORFLOW_INC",
-            join_path(
-                self.spec["py-tensorflow"].prefix.lib,
-                "python{0}/site-packages/tensorflow/include".format(
-                    self.spec["python"].version.up_to(2)
-                ),
-            ),
-        )
+        env.set("TENSORFLOW_DIR",
+                join_path(
+                    self.spec["py-tensorflow"].prefix.lib,
+                    "python{0}/site-packages/tensorflow".format(
+                    self.spec["python"].version.up_to(2)))
+                )
+        env.set("TENSORFLOW_INC",
+                join_path(
+                    self.spec["py-tensorflow"].prefix.lib,
+                    "python{0}/site-packages/tensorflow/include".format(
+                    self.spec["python"].version.up_to(2)))
+                )
 
     @sanitize_paths
     def setup_run_environment(self, env):
