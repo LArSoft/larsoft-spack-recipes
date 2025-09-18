@@ -89,7 +89,7 @@ class Larrecodnn(CMakePackage, FnalGithubPackage):
         ]
         with when("+tensorflow"):
             args.extend( [
-                self.define("TRITON_DIR", self.spec["triton"].prefix.lib),
+                self.define("TENSORFLOW_FOUND"),
                 self.define("TENSORFLOW_DIR",
                             join_path(
                                 self.spec["py-tensorflow"].prefix.lib),
