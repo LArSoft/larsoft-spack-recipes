@@ -105,9 +105,10 @@ class Larrecodnn(CMakePackage, FnalGithubPackage):
 
     @property
     def cmake_prefix_paths(self):
-        return "{0}/lib/python{1}/site-packages/torch".format(
-                    self.spec["py-torch"].prefix, self.spec["python"].version.up_to(2)
-                )
+        return [self.prefix,
+                "{0}/lib/python{1}/site-packages/torch".format(
+                self.spec["py-torch"].prefix, self.spec["python"].version.up_to(2))
+                ]
 
     def setup_build_environment(self, env):
         env.set("TRITON_DIR", self.spec["triton"].prefix.lib)

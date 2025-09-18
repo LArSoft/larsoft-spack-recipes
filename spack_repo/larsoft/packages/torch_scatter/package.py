@@ -55,6 +55,7 @@ class TorchScatter(CMakePackage):
 
     @property
     def cmake_prefix_paths(self):
-        return "{0}/lib/python{1}/site-packages/torch".format(
-                    self.spec["py-torch"].prefix, self.spec["python"].version.up_to(2)
-                )
+        return [self.prefix, 
+                "{0}/lib/python{1}/site-packages/torch".format(
+                self.spec["py-torch"].prefix, self.spec["python"].version.up_to(2))
+                ]
