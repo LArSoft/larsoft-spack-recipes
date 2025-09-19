@@ -87,20 +87,6 @@ class Larrecodnn(CMakePackage, FnalGithubPackage):
                 self.spec["delaunator-cpp"].prefix.include
             ),
         ]
-        with when("+tensorflow"):
-            args.extend( (
-                self.define("TensorFlow_FOUND", "ON"),
-                self.define("TENSORFLOW_DIR",
-                            join_path(
-                                self.spec["py-tensorflow"].prefix.lib,
-                                "python{0}/site-packages/tensorflow".format(
-                                self.spec["python"].version.up_to(2)))),
-                self.define("TENSORFLOW_INC",
-                            join_path(
-                                self.spec["py-tensorflow"].prefix.lib,
-                                "python{0}/site-packages/tensorflow/include".format(
-                                self.spec["python"].version.up_to(2)))),
-                ) )
         return args
 
     @property
