@@ -92,9 +92,9 @@ class Larrecodnn(CMakePackage, FnalGithubPackage):
                 self.define("TensorFlow_FOUND", "ON"),
                 self.define("TENSORFLOW_DIR",
                             join_path(
-                                self.spec["py-tensorflow"].prefix.lib),
+                                self.spec["py-tensorflow"].prefix.lib,
                                 "python{0}/site-packages/tensorflow".format(
-                                self.spec["python"].version.up_to(2))),
+                                self.spec["python"].version.up_to(2)))),
                 self.define("TENSORFLOW_INC",
                             join_path(
                                 self.spec["py-tensorflow"].prefix.lib,
