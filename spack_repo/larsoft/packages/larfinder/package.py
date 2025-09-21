@@ -24,7 +24,7 @@ class Larfinder(CMakePackage, FnalGithubPackage):
 
     depends_on("cetmodules", type="build")
 
-    patch(self):
+    def patch(self):
         filter_file("Modules/FindTensorFlow.cmake",
                 "if (NOT TensorFlow_FOUND)",
                 'if (NOT TensorFlow_FOUND)\ncmake_policy(CMP0159,"OLD")')
