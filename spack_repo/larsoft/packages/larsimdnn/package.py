@@ -50,6 +50,8 @@ class Larsimdnn(CMakePackage, FnalGithubPackage):
     depends_on("larevt", when="@:09.06.05.01")
     depends_on("larsim")
     depends_on("py-tensorflow", when="+tensorflow")
+    depends_on("grpc")
+    depends_on("protobuf")
 
     def patch(self):
         filter_file("find_package\(TensorFlow 2.6.0 QUIET EXPORT\)",
