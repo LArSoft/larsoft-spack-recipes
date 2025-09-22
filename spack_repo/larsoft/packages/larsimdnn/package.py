@@ -58,6 +58,14 @@ class Larsimdnn(CMakePackage, FnalGithubPackage):
                 'list(APPEND CMAKE_FIND_LIBRARY_SUFFIXES ".so.2")\nfind_package(TensorFlow 2.6.0 REQUIRED EXPORT)',
                 "CMakeLists.txt"
                 )
+        filter_file('#include "tensorflow/cc/saved_model/tag_constants.h"',
+                    '#include "tensorflow/cc/saved_model/bundle_v2.h"\n#include "tensorflow/cc/saved_model/constants.h"\n#include "tensorflow/cc/saved_model/loader.h"',
+                    "larsimdnn/PhotonPropagation/TFLoaderTools/TFLoader.h",
+                    )
+        filter_file("{tensorflow::kSavedModelTagServe},",
+                    "{},",
+                    "larsimdnn/PhotonPropagation/TFLoaderTools/TFLoaderMLP_tool.cc",
+                    )
 
     @cmake_preset
     def cmake_args(self):
