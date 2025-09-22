@@ -51,6 +51,12 @@ class Larsimdnn(CMakePackage, FnalGithubPackage):
     depends_on("larsim")
     depends_on("py-tensorflow", when="+tensorflow")
 
+    def patch(self):
+        filter_file("find_package\(TensorFlow 2.6.0 QUIET EXPORT\)",
+                'list(APPEND CMAKE_FIND_LIBRARY_SUFFIXES ".so.2")\nfind_package(TensorFlow 2.6.0 REQUIRED EXPORT)',
+                "CMakeLists.txt"
+                )
+
     @cmake_preset
     def cmake_args(self):
         return [self.define_from_variant("CMAKE_CXX_STANDARD", "cxxstd")]
