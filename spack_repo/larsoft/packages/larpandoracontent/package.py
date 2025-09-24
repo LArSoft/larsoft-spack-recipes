@@ -56,7 +56,7 @@ class Larpandoracontent(CMakePackage, FnalGithubPackage):
     def cmake_args(self):
         return [
             self.define_from_variant("CMAKE_CXX_STANDARD", "cxxstd"),
-            self.define("CMAKE_MODULE_PATH", f"{self.spec['pandora'].prefix}/cmakemodules"),
+            self.define("CMAKE_MODULE_PATH", f"{self.spec['pandorasdk'].prefix}/cmakemodules"),
             self.define_from_variant("PANDORA_MONITORING", "monitoring"),
         ]
 
