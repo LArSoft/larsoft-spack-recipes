@@ -26,6 +26,7 @@ class Larvecutils(CMakePackage, FnalGithubPackage):
     depends_on("cxx", type="build")
 
     depends_on("cetmodules", type="build")
+    depends_on("mpi")
 
     def cmake_args(self):
         return [
