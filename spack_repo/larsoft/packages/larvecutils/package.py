@@ -26,7 +26,15 @@ class Larvecutils(CMakePackage, FnalGithubPackage):
     depends_on("cxx", type="build")
 
     depends_on("cetmodules", type="build")
-    depends_on("mpi")
+
+    def patch(self):
+        filter_file("find_package\(OpenMP EXPORT\)",
+                    "find_package(OpenMP)",
+                    "larvecutils/MarqFitAlg/CMakeLists.txt")
+        filter_file("PUBLIC OpenMP::",
+                    "PRIVATE OpenMP::",
+                    "larvecutils/MarqFitAlg/CMakeLists.txt")
+
 
     def cmake_args(self):
         return [
