@@ -16,6 +16,9 @@ class Larrecodnn(CMakePackage, FnalGithubPackage):
     git = "https://github.com/%s" % repo
     version_patterns = ["v09_00_00", "09.21.21"]
 
+    version("10.01.23", sha256="5767df953821fb021a9a740d6aa347920fbd7c178c5163a9e2e17c95666dc88d")
+    version("10.01.22", sha256="e27a4455c554414131168901b1e1bd1627acb1ba7dc8a6a2ae74aca6256c24e0")
+    version("10.01.21", sha256="b00527da9bb6d1493f97ff5347029aa49b1e0d4f987bd812a8b303750f37feed")
     version("10.01.18", sha256="d713f6e34f69bd57a9a678e87330c919416ae0cc42fd4ba56eae2425eab205f0")
     version("10.01.15", sha256="75101a745eb655ad1f88ba0b5f112d12454911501b24f210a038b295368697e5")
     version("10.01.14", sha256="32d3e1fc865b22ce0c2c3a8e869c9fef51baf615a78b4e3461b5923395c80c90")
