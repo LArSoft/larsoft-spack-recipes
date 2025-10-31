@@ -19,6 +19,7 @@ class Larg4(CMakePackage, FnalGithubPackage):
 
     version("10.01.01", sha256="7342df284cc1077ad6b0558f1d9ea9af5a57086931df3daa5be4c3b8349808b5")
     version("10.01.00", sha256="0489eae228ceaf4e83e03ff79af2f47d2b173ea85d1d1cacb2e0532dcc693475")
+    version("10.00.15", sha256="7d7869f7f1fefa5d7d19abacd5e2e17d58cbbc38ca026c5a7cbf8e0a3af1d329")
     version("10.00.13", sha256="a51f8f6a9333c8f2f260a61647e599c84e62e63fa378b23925f215bd87633605")
     version("10.00.12", sha256="561a02ea708fd4f1255717863f587c009b68dfe6f51f301a3f385ce1edb5ed3d")
     version("10.00.09", sha256="ffd8911bad84c0b48f441ef57091dd0a4b96abe1976dcb0ae4a8690b1206a086")

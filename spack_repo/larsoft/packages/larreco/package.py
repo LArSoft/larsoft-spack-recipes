@@ -17,6 +17,7 @@ class Larreco(CMakePackage, FnalGithubPackage):
     git = "https://github.com/%s" % repo
     version_patterns = ["v09_00_00", "09.23.09"]
 
+    version("10.02.09", sha256="f5f03add315200bdfa01038aa5e0a23f56b85b93e9bde52e9d607dea1eca8aa0") 
     version("10.02.08", sha256="c0ce9de57e5da4d8276c0f05e10bd03a19aaa5b2c0d535d36d9dbe44c1b59580")
     version("10.02.07", sha256="a5a803d6ab79485aa99dceef438effad732b02d1a4b905b93f15ae4d333044d5")
     version("10.02.06", sha256="021adc3e560137522fa78f3418b3187cd8372ac6de50f91da8247345cf5d222f")

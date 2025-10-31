@@ -16,6 +16,7 @@ class Lareventdisplay(CMakePackage, FnalGithubPackage):
     git = "https://github.com/%s" % repo
     version_patterns = ["v09_00_00", "09.10.19"]
 
+    version("10.00.29", sha256="3caf3ba9578bdeb5e6e9ae3a4a88d0208f60c826ab92b7787b440d27118cb99f")
     version("10.00.28", sha256="3edfb274a58679d62c5db277c1ffb8498d6d0b1e241d5faea5f0304247751e06")
     version("10.00.27", sha256="b57a9f7b8a46c1b36aa125364016eec6442574a6fafa95c17e10c7cad254215a")
     version("10.00.26", sha256="579187726e1549f1277b7ee8647f9fa431a86f71008b5296c1bc028337863971")
