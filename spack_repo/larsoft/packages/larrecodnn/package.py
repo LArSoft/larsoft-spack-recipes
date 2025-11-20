@@ -73,7 +73,7 @@ class Larrecodnn(CMakePackage, FnalGithubPackage):
     depends_on("torch-scatter")
     depends_on("root")
     depends_on("tbb")
-    depends_on("py-triton")
+    depends_on("triton")
     depends_on("zlib")
 
     def patch(self):
@@ -114,21 +114,11 @@ class Larrecodnn(CMakePackage, FnalGithubPackage):
                 ]
 
     def setup_build_environment(self, env):
-        env.set("TRITON_DIR", 
-                join_path(
-                    self.spec["py-triton"].prefix.lib,
-                    "python{0}/site-packages/triton".format(
-                    self.spec["python"].version.up_to(2)))
-                )
-        env.set("TRITON_INC",
-                join_path(
-                    self.spec["py-triton"].prefix.lib,
-                    "python{0}/site-packages/triton/include".format(
-                    self.spec["python"].version.up_to(2)))
-                )
+        env.set("TRITON_DIR", self.spec["triton"].prefix.lib)
 
     @when("+tensorflow")
     def setup_build_environment(self, env):
+        env.set("TRITON_DIR", self.spec["triton"].prefix.lib)
         env.set("TENSORFLOW_DIR",
                 join_path(
                     self.spec["py-tensorflow"].prefix.lib,
