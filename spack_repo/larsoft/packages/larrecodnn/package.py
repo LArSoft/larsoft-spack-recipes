@@ -67,7 +67,7 @@ class Larrecodnn(CMakePackage, FnalGithubPackage):
     depends_on("messagefacility")
     depends_on("nurandom")
     depends_on("nusimdata")
-    depends_on("protobuf", when="@:09.23.00")
+#    depends_on("protobuf", when="@:09.23.00")
     depends_on("py-tensorflow", when="+tensorflow")
     depends_on("py-torch")
     depends_on("torch-scatter")
