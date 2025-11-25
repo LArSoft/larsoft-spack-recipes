@@ -42,9 +42,9 @@ class Larpandoracontent(CMakePackage, FnalGithubPackage):
     depends_on("cetmodules", type="build")
 
     depends_on("eigen@:3.4")
-    depends_on("pandoramonitoring@:3", when="+monitoring")
-    depends_on("pandorasdk@:3")
-    depends_on("pandorapfa@:3")
+    depends_on("pandoramonitoring", when="+monitoring")
+    depends_on("pandorasdk")
+    depends_on("pandorapfa")
     depends_on("py-torch")
 
     def patch(self):
