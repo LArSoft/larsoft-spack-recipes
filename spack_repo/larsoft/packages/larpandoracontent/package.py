@@ -63,7 +63,6 @@ class Larpandoracontent(CMakePackage, FnalGithubPackage):
             self.define_from_variant("CMAKE_CXX_STANDARD", "cxxstd"),
             self.define("CMAKE_MODULE_PATH", f"{self.spec['pandorasdk'].prefix}/cmakemodules"),
             self.define_from_variant("PANDORA_MONITORING", "monitoring"),
-            self.define("CMAKE_DISABLE_FIND_PACKAGE_cetmodules", "ON")
         ]
 
     @property
