@@ -97,6 +97,18 @@ class Larrecodnn(CMakePackage, FnalGithubPackage):
                     "#TorchScatter::TorchScatter",
                     "larrecodnn/NuGraph/CMakeLists.txt",
                     )
+        filter_file("gRPC::grpc",
+                    "#gRPC::grpc",
+                    "larrecodnn/NuGraph/CMakeLists.txt",
+                    )
+        filter_file("gRPC::grpc",
+                    "#gRPC::grpc",
+                    "larrecodnn/ImagePatternAlgs/NuSonic/Triton/CMakeLists.txt",
+                    )
+        filter_file("gRPC::grpc",
+                    "#gRPC::grpc",
+                    "larrecodnn/ImagePatternAlgs/Triton/Tools/CMakeLists.txt",
+                    )
 
 
     @cmake_preset
