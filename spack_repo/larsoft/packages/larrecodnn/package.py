@@ -78,9 +78,6 @@ class Larrecodnn(CMakePackage, FnalGithubPackage):
 
     def patch(self):
         filter_file("LANGUAGES CXX", "LANGUAGES CXX C", "CMakeLists.txt")
-        filter_file("find_package\(larfinder REQUIRED EXPORT\)",
-            "find_package(Protobuf REQUIRED EXPORT)\nfind_package(larfinder REQUIRED EXPORT)",
-            "CMakeLists.txt")
         filter_file("find_package\(TensorFlow 2.6.0 QUIET EXPORT\)",
                 'list(APPEND CMAKE_FIND_LIBRARY_SUFFIXES ".so.2")\nfind_package(TensorFlow 2.6.0 REQUIRED EXPORT)',
                 "CMakeLists.txt"
@@ -102,18 +99,6 @@ class Larrecodnn(CMakePackage, FnalGithubPackage):
         filter_file("IMPL_TARGET_VAR NuGraphInference_module",
                     "TorchScatter::TorchScatter\nIMPL_TARGET_VAR NuGraphInference_module",
                     "larrecodnn/NuGraph/CMakeLists.txt",
-                    )
-        filter_file("gRPC::grpc",
-                    "#gRPC::grpc",
-                    "larrecodnn/NuGraph/CMakeLists.txt",
-                    )
-        filter_file("gRPC::grpc",
-                    "#gRPC::grpc",
-                    "larrecodnn/ImagePatternAlgs/NuSonic/Triton/CMakeLists.txt",
-                    )
-        filter_file("gRPC::grpc",
-                    "#gRPC::grpc",
-                    "larrecodnn/ImagePatternAlgs/Triton/Tools/CMakeLists.txt",
                     )
 
 
