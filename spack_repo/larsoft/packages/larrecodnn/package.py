@@ -93,8 +93,14 @@ class Larrecodnn(CMakePackage, FnalGithubPackage):
                     "{},",
                     "larrecodnn/ImagePatternAlgs/Tensorflow/TF/tf_graph.cc",
                     )
+        #Take TorchScatter out of all link lists
         filter_file("TorchScatter::TorchScatter",
                     "#TorchScatter::TorchScatter",
+                    "larrecodnn/NuGraph/CMakeLists.txt",
+                    )
+        # but put it back for NuGraphInference
+        filter_file("IMPL_TARGET_VAR NuGraphInference_module",
+                    "TorchScatter::TorchScatter\nIMPL_TARGET_VAR NuGraphInference_module",
                     "larrecodnn/NuGraph/CMakeLists.txt",
                     )
         filter_file("gRPC::grpc",
