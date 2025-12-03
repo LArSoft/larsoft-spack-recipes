@@ -93,6 +93,10 @@ class Larrecodnn(CMakePackage, FnalGithubPackage):
                     "{},",
                     "larrecodnn/ImagePatternAlgs/Tensorflow/TF/tf_graph.cc",
                     )
+        filter_file("TorchScatter::TorchScatter",
+                    "#TorchScatter::TorchScatter",
+                    "larrecodnn/NuGraph/CMakeLists.txt",
+                    )
 
 
     @cmake_preset
