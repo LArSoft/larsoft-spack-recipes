@@ -58,10 +58,6 @@ class Larsimdnn(CMakePackage, FnalGithubPackage):
     depends_on("protobuf")
 
     def patch(self):
-        filter_file("find_package\(TensorFlow 2.6.0 QUIET EXPORT\)",
-                'list(APPEND CMAKE_FIND_LIBRARY_SUFFIXES ".so.2")\nfind_package(TensorFlow 2.6.0 REQUIRED EXPORT)',
-                "CMakeLists.txt"
-                )
         filter_file('#include "tensorflow/cc/saved_model/tag_constants.h"',
                     '#include "tensorflow/cc/saved_model/bundle_v2.h"\n#include "tensorflow/cc/saved_model/constants.h"\n#include "tensorflow/cc/saved_model/loader.h"',
                     "larsimdnn/PhotonPropagation/TFLoaderTools/TFLoader.h",
@@ -77,16 +73,20 @@ class Larsimdnn(CMakePackage, FnalGithubPackage):
 
     @when("+tensorflow")
     def setup_build_environment(self, env):
-        env.set("TENSORFLOW_DIR", join_path(self.spec["py-tensorflow"].prefix.lib,
-                "python%s/site-packages/tensorflow" % self.spec["python"].version.up_to(2),
-            ),
+        env.set("TENSORFLOW_DIR",
+                join_path(self.spec["py-tensorflow"].prefix.lib,
+                "python%s/site-packages/tensorflow" % self.spec["python"].version.up_to(2),)
+                + ";" +
+                join_path(self.spec["py-tensorflow"].prefix.lib64,
+                "python%s/site-packages/tensorflow" % self.spec["python"].version.up_to(2),)
         )
         env.set(
             "TENSORFLOW_INC",
-            join_path(
-                self.spec["py-tensorflow"].prefix.lib,
-                "python%s/site-packages/tensorflow/include" % self.spec["python"].version.up_to(2),
-            ),
+            join_path(self.spec["py-tensorflow"].prefix.lib,
+                "python%s/site-packages/tensorflow/include" % self.spec["python"].version.up_to(2),)
+            + ";" +
+            join_path(self.spec["py-tensorflow"].prefix.lib64,
+                "python%s/site-packages/tensorflow/include" % self.spec["python"].version.up_to(2),)
         )
 
     @sanitize_paths

@@ -130,11 +130,19 @@ class Larrecodnn(CMakePackage, FnalGithubPackage):
                 join_path(
                     self.spec["py-tensorflow"].prefix.lib,
                     "python{0}/site-packages/tensorflow".format(
+                    self.spec["python"].version.up_to(2))) + ";" +
+                join_path(
+                    self.spec["py-tensorflow"].prefix.lib64,
+                    "python{0}/site-packages/tensorflow".format(
                     self.spec["python"].version.up_to(2)))
                 )
         env.set("TENSORFLOW_INC",
                 join_path(
                     self.spec["py-tensorflow"].prefix.lib,
+                    "python{0}/site-packages/tensorflow/include".format(
+                    self.spec["python"].version.up_to(2))) + ";" +
+                join_path(
+                    self.spec["py-tensorflow"].prefix.lib64,
                     "python{0}/site-packages/tensorflow/include".format(
                     self.spec["python"].version.up_to(2)))
                 )
