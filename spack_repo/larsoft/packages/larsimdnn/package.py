@@ -3,6 +3,8 @@
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
+from curses import version
+
 from spack import *
 from spack.package import *
 from spack_repo.builtin.build_systems.cmake import CMakePackage
@@ -16,6 +18,8 @@ class Larsimdnn(CMakePackage, FnalGithubPackage):
     git = "https://github.com/%s" % repo
     version_patterns = ["v09_00_00", "09.05.18"]
 
+    version("10.02.01", sha256="7b2fb0047f0ff30891a8d749c7256a2cce39797ef0aa5a46dc8603bf4b241465")
+    version("10.02.00", sha256="885cd7305c53dec33ed7ae8a97367ac2fe93aefd28684aae5d6710c47a1f084d")
     version("10.01.03", sha256="26caefd7b77dd09df2e0bdfc3f4ab83576753350c919f1c0f64bbde038c4e129") 
     version("10.01.02", sha256="88003c94a524c28e323a34129f8b19e7252373e3d0d6bb2bff80c02fb7001d41")
     version("10.01.01", sha256="50a80d3a834105e9eb90767cca21236afaee9fa49e79329285f841112e94e592")

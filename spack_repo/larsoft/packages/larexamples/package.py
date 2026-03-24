@@ -17,6 +17,8 @@ class Larexamples(CMakePackage, FnalGithubPackage):
     git = "https://github.com/%s" % repo
     version_patterns = ["v09_00_00", "09.08.18"]
 
+    version("10.01.01", sha256="7802b1b7a130a0fd41b4c1479d688dd8eb77032cb1915eb76e66f97009ddd4d8")
+    version("10.01.00", sha256="d58bcbac42d4543b9c1347ae727ddcb301e878538b215726d8a4c7e5771a036f")
     version("10.00.25", sha256="8394b935b55827cc88641ef264dd72a34bd68b544146317d45381cb1110eadf9") 
     version("10.00.24", sha256="fdee1a6e7af5ed28d164d56cc1c82685d197e94f89d2e8d5f5445eee07ecefb4")
     version("10.00.23", sha256="81cfc81c2493a731d783ecfd1c45c1e0e3519437ad065f74e0a9037dd127bafb")
