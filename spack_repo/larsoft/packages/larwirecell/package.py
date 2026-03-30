@@ -65,6 +65,7 @@ class Larwirecell(CMakePackage, FnalGithubPackage):
     depends_on("jsonnet")
     depends_on("spdlog")
     depends_on("tbb")
+    depends_on("hdf5")
 
     def patch(self):
         filter_file(r"list\(TRANSFORM _fwc_deps APPEND _FOUND", "", "Modules/FindWireCell.cmake")

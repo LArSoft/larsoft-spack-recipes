@@ -52,6 +52,7 @@ class Larg4(CMakePackage, FnalGithubPackage):
     depends_on("geant4")
     depends_on("larcorealg")
     depends_on("larcore")
+    depends_on("lardata")
     depends_on("lardataalg")
     depends_on("lardataobj")
     depends_on("messagefacility")
