@@ -75,12 +75,9 @@ class Larsoft(CMakePackage, FnalGithubPackage):
     with when("+eventdisplay"):
         depends_on("lareventdisplay")
         depends_on("larpandoracontent +monitoring")
-        depends_on("root +opengl+x")
 
     with when("~eventdisplay"):
-        depends_on("geant4 ~opengl~x11~qt")
         depends_on("larpandoracontent ~monitoring")
-        depends_on("root ~opengl~x")
 
     with when("+tensorflow"):
         depends_on("larrecodnn+tensorflow")
