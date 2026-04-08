@@ -59,7 +59,7 @@ class Lareventdisplay(CMakePackage, FnalGithubPackage):
     depends_on("messagefacility")
     depends_on("nuevdb")
     depends_on("nusimdata")
-    depends_on("root")
+    depends_on("root+x+opengl")
 
     with when("@:09.11.05.01"):
         depends_on("art-root-io")
