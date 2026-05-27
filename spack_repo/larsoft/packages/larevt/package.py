@@ -1,4 +1,4 @@
-# Copyright 2013-2019 Lawrence Livermore National Security, LLC and other
+ Copyright 2013-2019 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
@@ -17,6 +17,7 @@ class Larevt(CMakePackage, FnalGithubPackage):
     git = "https://github.com/%s" % repo
     version_patterns = ["v09_00_00", "09.10.00"]
 
+    version("10.00.19", sha256="2207702cd2ed78145627780ac2dc00b83086c28980abc28c2dd3f8ee7b726c52")
     version("10.00.18", sha256="c3d224cb92344b0e555154f603ce116ad1e569d1ffa1de65d5c5323845da01f1")
     version("10.00.15", sha256="1b86bf2f8c3ea5e721d459e88e29ace19908f92023ad879fc447b1cac1e5ab2a")
     version("10.00.14", sha256="f9a2606033c44f79b285da373e25f570e5f0e7999cd94a5ce7b5a0547482186c")

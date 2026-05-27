@@ -18,6 +18,7 @@ class Larsimdnn(CMakePackage, FnalGithubPackage):
     git = "https://github.com/%s" % repo
     version_patterns = ["v09_00_00", "09.05.18"]
 
+    version("10.02.02", sha256="de50b4a7426b88f609e1eee03a41840afa9df866557806762d67596148b86fb6")
     version("10.02.01", sha256="7b2fb0047f0ff30891a8d749c7256a2cce39797ef0aa5a46dc8603bf4b241465")
     version("10.02.00", sha256="885cd7305c53dec33ed7ae8a97367ac2fe93aefd28684aae5d6710c47a1f084d")
     version("10.01.03", sha256="26caefd7b77dd09df2e0bdfc3f4ab83576753350c919f1c0f64bbde038c4e129") 
