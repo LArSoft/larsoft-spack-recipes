@@ -104,6 +104,11 @@ class Larrecodnn(CMakePackage, FnalGithubPackage):
                     "TorchScatter::TorchScatter\nIMPL_TARGET_VAR NuGraphInference_module",
                     "larrecodnn/NuGraph/CMakeLists.txt",
                     )
+        # add extra warning skip for larrecodnn/ImageMaker
+        filter_file("-Wno-stringop-overread",
+                    "-Wno-stringop-overread;-Wno-stringop-overflow",
+                    "larrecodnn/ImageMaker/CMakeLists.txt",
+                   )
 
 
     @cmake_preset
