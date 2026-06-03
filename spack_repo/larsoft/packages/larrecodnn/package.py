@@ -60,6 +60,7 @@ class Larrecodnn(CMakePackage, FnalGithubPackage):
     depends_on("grpc")
     depends_on("hdf5")
     depends_on("hep-hpc")
+    depends_on("hep-hpc@0_15_00:", when="@10.03.05:")
     depends_on("larcore")
     depends_on("larcorealg")
     depends_on("larcoreobj")
