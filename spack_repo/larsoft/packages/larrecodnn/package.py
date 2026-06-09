@@ -163,6 +163,33 @@ class Larrecodnn(CMakePackage, FnalGithubPackage):
         env.prepend_path("FHICL_FILE_PATH", self.prefix.job)
         env.prepend_path("FW_SEARCH_PATH", self.prefix.config_data)
 
+    @when("+tensorflow")
+    def setup_run_environment(self, env):
+        env.prepend_path("CET_PLUGIN_PATH", self.prefix.lib)
+        env.prepend_path("FHICL_FILE_PATH", self.prefix.job)
+        env.prepend_path("FW_SEARCH_PATH", self.prefix.config_data)
+        env.set("TRITON_DIR", self.spec["triton"].prefix.lib)
+        env.set("TENSORFLOW_DIR",
+                join_path(
+                    self.spec["py-tensorflow"].prefix.lib,
+                    "python{0}/site-packages/tensorflow".format(
+                    self.spec["python"].version.up_to(2))) + ";" +
+                join_path(
+                    self.spec["py-tensorflow"].prefix.lib64,
+                    "python{0}/site-packages/tensorflow".format(
+                    self.spec["python"].version.up_to(2)))
+                )
+        env.set("TENSORFLOW_INC",
+                join_path(
+                    self.spec["py-tensorflow"].prefix.lib,
+                    "python{0}/site-packages/tensorflow/include".format(
+                    self.spec["python"].version.up_to(2))) + ";" +
+                join_path(
+                    self.spec["py-tensorflow"].prefix.lib64,
+                    "python{0}/site-packages/tensorflow/include".format(
+                    self.spec["python"].version.up_to(2)))
+                )
+
     def flag_handler(self, name, flags):
         if name == "cxxflags" and self.spec.compiler.name == "gcc":
             flags.append("-Wno-error=deprecated-declarations")
