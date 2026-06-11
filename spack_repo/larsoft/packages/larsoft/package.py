@@ -61,32 +61,32 @@ class Larsoft(CMakePackage, FnalGithubPackage):
     depends_on("c", type="build")
     depends_on("cxx", type="build")
 
-    depends_on("cetmodules", type="build")
+    depends_on("cetmodules", type=("build", "run"))
 
-    depends_on("larfinder")
-    depends_on("larg4")
-    depends_on("larsoft-data")
-    depends_on("larana")
-    depends_on("larexamples")
-    depends_on("larpandora")
-    depends_on("larreco")
-    depends_on("larsimrad")
-    depends_on("larwirecell")
+    depends_on("larfinder", type=("build", "run"))
+    depends_on("larg4", type="run")
+    depends_on("larsoft-data", type="run")
+    depends_on("larana", type="run")
+    depends_on("larexamples", type="run")
+    depends_on("larpandora", type="run")
+    depends_on("larreco", type="run")
+    depends_on("larsimrad", type="run")
+    depends_on("larwirecell", type="run")
 
     with when("+eventdisplay"):
-        depends_on("lareventdisplay")
-        depends_on("larpandoracontent +monitoring")
+        depends_on("lareventdisplay", type="run")
+        depends_on("larpandoracontent +monitoring", type="run")
 
     with when("~eventdisplay"):
-        depends_on("larpandoracontent ~monitoring")
+        depends_on("larpandoracontent ~monitoring", type="run")
 
     with when("+tensorflow"):
-        depends_on("larrecodnn+tensorflow")
-        depends_on("larsimdnn+tensorflow")
+        depends_on("larrecodnn+tensorflow", type="run")
+        depends_on("larsimdnn+tensorflow", type="run")
 
     with when("~tensorflow"):
-        depends_on("larrecodnn~tensorflow")
-        depends_on("larsimdnn~tensorflow")
+        depends_on("larrecodnn~tensorflow", type="run")
+        depends_on("larsimdnn~tensorflow", type="run")
 
     def patch(self):
         with when("@:09.90.01.01 ~eventdisplay"):
