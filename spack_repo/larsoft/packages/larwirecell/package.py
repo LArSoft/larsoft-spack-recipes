@@ -62,7 +62,8 @@ class Larwirecell(CMakePackage, FnalGithubPackage):
     depends_on("larevt")
     depends_on("larsim")
     depends_on("root")
-    depends_on("wire-cell-toolkit+cppjsonnet")
+    depends_on("wire-cell-toolkit+cppjsonnet", when="@:10.03.06")
+    depends_on("wire-cell-toolkit@0.37.0:", when="@10.03.07:")
 
     # Dependencies for FindWireCell.cmake module
     depends_on("boost")
