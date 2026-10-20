@@ -15,6 +15,7 @@ class Larbatch(CMakePackage, FnalGithubPackage):
     git = "https://github.com/%s" % repo
     version_patterns = ["v01_00_00"]
 
+    version("01.62.00", sha256="241431fe5af29f7a8ddd075356cb25928eeee24c9c8a207526546a17c1598bef")
     version("01.61.04", sha256="49d78afdd0631bcda2e8261498d60d0f050dd62355cb580b97f0a4de147cf587")
     version("01.61.01", sha256="5a0e42d8b0960dacedb5d6e47c41d8fce624b6442eb3751f8cbc17e4cfc67ec8")
     version("01.60.01", sha256="81fab1ead869b4d45751d215685e97878b7796daeada2dbbe699b38f5ae9dade")
