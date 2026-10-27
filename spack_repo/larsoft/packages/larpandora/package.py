@@ -86,9 +86,16 @@ class Larpandora(CMakePackage, FnalGithubPackage):
     depends_on("nusimdata")
     depends_on("pandorasdk")
     depends_on("py-torch")
+    depends_on("protobuf")
     depends_on("root")
     depends_on("clhep")
     depends_on("cetmodules")
+
+    def patch(self):
+        with when('@10.08.00'):
+            filter_file(r'find_ups_product\(protobuf\)',
+                        'find_package(protobuf)',
+                        'larpandora/LArPandoraEventBuilding/LArPandoraPID/CMakeLists.txt')
 
     @property
     def cmake_prefix_paths(self):
