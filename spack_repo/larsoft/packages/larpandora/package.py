@@ -92,7 +92,7 @@ class Larpandora(CMakePackage, FnalGithubPackage):
     depends_on("cetmodules")
 
     def patch(self):
-        with when('@10.08.00'):
+        with when('@=10.08.00'):
             filter_file(r'find_ups_product\(protobuf\)',
                         'find_package(Protobuf REQUIRED)',
                         'larpandora/LArPandoraEventBuilding/LArPandoraPID/CMakeLists.txt')
