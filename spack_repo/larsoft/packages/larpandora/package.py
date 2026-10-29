@@ -91,11 +91,7 @@ class Larpandora(CMakePackage, FnalGithubPackage):
     depends_on("clhep")
     depends_on("cetmodules")
 
-    def patch(self):
-        with when('@=10.08.00'):
-            filter_file(r'find_ups_product\(protobuf\)',
-                        'find_package(Protobuf REQUIRED)',
-                        'larpandora/LArPandoraEventBuilding/LArPandoraPID/CMakeLists.txt')
+    patch('10.08.00.patch' when='@10.08.00')
 
     @property
     def cmake_prefix_paths(self):
