@@ -91,7 +91,7 @@ class Larpandora(CMakePackage, FnalGithubPackage):
     depends_on("clhep")
     depends_on("cetmodules")
 
-    patch('10.08.00.patch' when='@10.08.00')
+    patch('10.08.00.patch', when='@10.08.00')
 
     @property
     def cmake_prefix_paths(self):
