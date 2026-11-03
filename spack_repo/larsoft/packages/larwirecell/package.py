@@ -16,6 +16,7 @@ class Larwirecell(CMakePackage, FnalGithubPackage):
     git = "https://github.com/%s" % repo
     version_patterns = ["v09_00_00", "09.18.00"]
 
+    version("10.04.07", sha256="1f62b6dfcf365330941eb6e03f4cf271fb4470c65c73848b8cb59c321933eef9")
     version("10.04.06", sha256="680690541a2dba3f0cc9a19d89de98c3903f2100b64b9530d4ef608ec2662ae6")
     version("10.04.05", sha256="b2a314a6c5a1d167c201d98c824ab60660edae99c7d82c0b091cfc0196002e5f")
     version("10.04.04", sha256="f25370d019df440786e9cb9db0d974241ff2e37ec361c8700c342389d3a29678")
