@@ -16,6 +16,7 @@ class Larsimrad(CMakePackage, FnalGithubPackage):
     git = "https://github.com/%s" % repo
     version_patterns = ["v09_00_00", "09.08.18"]
 
+    version("10.01.16", sha256="7ec441fc57d2fe926a7135eb342511ac6f9ffbf43f1e8996ee64aa7aa4227646")
     version("10.01.15", sha256="ffa6f2fe3f84e7d7de1cd651d4685322291b68e3142820979ea00434d9894e3a")
     version("10.01.14", sha256="23ac8d4d441ed2f7d802b0b185f96c1c73e6ff676ea9b86589bd0b6e98279b4c")
     version("10.01.13", sha256="4c11d3c695ef419ee318c2e425a697e151dc21f1852803915d968fe410e5f39b")
