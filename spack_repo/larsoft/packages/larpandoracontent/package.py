@@ -47,6 +47,7 @@ class Larpandoracontent(CMakePackage, FnalGithubPackage):
     cxxstd_variant("17", "20", default="17")
 
     variant("monitoring", default=True, description="Enable PandoraMonitoring when building.")
+    variant("torch", default=True, description="Use LibTorch to build LArDLContent")
 
     depends_on("c", type="build")
     depends_on("cxx", type="build")
@@ -57,7 +58,7 @@ class Larpandoracontent(CMakePackage, FnalGithubPackage):
     depends_on("pandoramonitoring", when="+monitoring")
     depends_on("pandorasdk")
     depends_on("pandorapfa")
-    depends_on("py-torch")
+    depends_on("py-torch", when="+torch")
 
     def patch(self):
         filter_file(r"set\(PANDORA_MONITORING TRUE\)", "", "CMakeLists.txt")
@@ -71,11 +72,16 @@ class Larpandoracontent(CMakePackage, FnalGithubPackage):
 
     @cmake_preset
     def cmake_args(self):
-        return [
+        args = [
             self.define_from_variant("CMAKE_CXX_STANDARD", "cxxstd"),
             self.define("CMAKE_MODULE_PATH", f"{self.spec['pandorasdk'].prefix}/cmakemodules"),
             self.define_from_variant("PANDORA_MONITORING", "monitoring"),
+            self.define_from_variant("PANDORA_LIBTORCH", "torch"),
         ]
+        if self.spec.satisfies("~torch"):
+            args.append(self.define("CMAKE_DISABLE_FIND_PACKAGE_Torch", True))
+
+        return args
 
     @property
     def cmake_prefix_paths(self):

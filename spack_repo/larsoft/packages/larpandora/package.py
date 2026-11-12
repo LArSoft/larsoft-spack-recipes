@@ -55,6 +55,7 @@ class Larpandora(CMakePackage, FnalGithubPackage):
     version("09.21.20", sha256="f1b9e65690eb166264c39bfa74d90288463a279397ed251db0b8462d23c16731")
     version("develop", branch="develop", get_full_repo=True)
 
+    variant("torch", default=True, description="Use LibTorch to build PID+Ivysaurus")
     cxxstd_variant("17", "20", default="17")
 
     depends_on("c", type="build")
@@ -82,7 +83,7 @@ class Larpandora(CMakePackage, FnalGithubPackage):
     depends_on("messagefacility")
     depends_on("nusimdata")
     depends_on("pandorasdk")
-    depends_on("py-torch")
+    depends_on("py-torch", when="+torch")
     depends_on("root")
     depends_on("clhep")
     depends_on("cetmodules")
@@ -96,10 +97,14 @@ class Larpandora(CMakePackage, FnalGithubPackage):
 
     @cmake_preset
     def cmake_args(self):
-        return [
+        args = [
             self.define_from_variant("CMAKE_CXX_STANDARD", "cxxstd"),
+            self.define_from_variant("LARPANDORA_LIBTORCH", "torch"),
             self.define("IGNORE_ABSOLUTE_TRANSITIVE_DEPENDENCIES", True),
         ]
+        if self.spec.satisfies("~torch"):
+            args.append(self.define("CMAKE_DISABLE_FIND_PACKAGE_Torch", True))
+        return args
 
     def flag_handler(self, name, flags):
         if name == "cxxflags" and self.spec.compiler.name == "gcc":
