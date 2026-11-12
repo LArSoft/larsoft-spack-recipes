@@ -87,7 +87,7 @@ class Larrecodnn(CMakePackage, FnalGithubPackage):
     depends_on("root")
     depends_on("tbb")
     depends_on("triton")
-    depends_on("zlib")
+    depends_on("zlib-api")
 
     def patch(self):
         filter_file("LANGUAGES CXX", "LANGUAGES CXX C", "CMakeLists.txt")

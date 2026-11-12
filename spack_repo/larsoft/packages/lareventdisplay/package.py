@@ -74,7 +74,7 @@ class Lareventdisplay(CMakePackage, FnalGithubPackage):
 
     with when("@:09.11.05.01"):
         depends_on("art-root-io")
-        depends_on("zlib")
+        depends_on("zlib-api")
 
     @cmake_preset
     def cmake_args(self):
