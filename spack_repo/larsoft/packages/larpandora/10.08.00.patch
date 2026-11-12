@@ -1,0 +1,19 @@
+commit 96f4a052a74964cc42e8035362b0e8598835c2e4
+Author: Patrick Gartung <gartung@fnal.gov>
+Date:   Tue Oct 27 10:03:21 2026 -0500
+
+    LArPandoraEventBuilding/LArPandoraPID: Replace find_ups_product(protobuf) with find_package(Protobuf)
+
+diff --git a/larpandora/LArPandoraEventBuilding/LArPandoraPID/CMakeLists.txt b/larpandora/LArPandoraEventBuilding/LArPandoraPID/CMakeLists.txt
+index 0179a60..a5cf2d3 100644
+--- a/larpandora/LArPandoraEventBuilding/LArPandoraPID/CMakeLists.txt
++++ b/larpandora/LArPandoraEventBuilding/LArPandoraPID/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ add_subdirectory(LArPandoraPIDData)
+ add_subdirectory(Ivysaurus)
+ 
+-find_ups_product(protobuf)
++find_package(Protobuf REQUIRED EXPORT)
+ 
+ cet_add_compiler_flags(CXX -Wno-pedantic)
+ 

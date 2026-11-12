@@ -17,6 +17,12 @@ class Larpandora(CMakePackage, FnalGithubPackage):
     git = "https://github.com/%s" % repo
     version_patterns = ["v09_00_00", "09.21.20"]
 
+    version("10.09.01", sha256="bdf5e865db8b453361194996425dd1c0a538f01b1ef831c6fbdaf089a635e9f4")
+    version("10.09.00", sha256="bae6f2dac03d391ed0caf6dbf810035e94dda8986c609de576ff845e5fb1e372")
+    version("10.08.01", sha256="fa5967ec95b7b4799e79ac2efd110bd006189131f31ba8ed2573306071dc2bd9")
+    version("10.08.00", sha256="60844dec7f33b9221510d78d1a1eaab0e4fdfc29a18683e4bebc6f0dbdfc7385")
+    version("10.07.00", sha256="18b0aa618b1987314a403be3b2af1f95fc0822c47772abc7b0cec667e49ac082")
+    version("10.06.01", sha256="0b50e626b22917b625f97039e420dc106457b87caedc718556bb0ce9c4784899")
     version("10.06.00", sha256="cf4b47f90de37f3327416426e1faa94c47e6b9c25278e515a705aa91b60ac915")
     version("10.05.02", sha256="4b4ffd415dc34b335395cc4d27e78655dd2b8f137b158f30405aa53cca691b99")
     version("10.05.01", sha256="8c15ad637315c01fdf968afbb0b0378605fefe1de038b5a097f3309f06eb3683")
@@ -84,9 +90,12 @@ class Larpandora(CMakePackage, FnalGithubPackage):
     depends_on("nusimdata")
     depends_on("pandorasdk")
     depends_on("py-torch", when="+torch")
+    depends_on("protobuf")
     depends_on("root")
     depends_on("clhep")
     depends_on("cetmodules")
+
+    patch('10.08.00.patch', when='@10.08.00')
 
     @property
     def cmake_prefix_paths(self):
