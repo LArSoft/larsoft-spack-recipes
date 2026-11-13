@@ -17,6 +17,7 @@ class Larpandora(CMakePackage, FnalGithubPackage):
     git = "https://github.com/%s" % repo
     version_patterns = ["v09_00_00", "09.21.20"]
 
+    version("11.00.00", sha256="96d20007dc596e34224117525de90db8abb53ba48009f3f14c23f83e9ad092b9")
     version("10.09.01", sha256="bdf5e865db8b453361194996425dd1c0a538f01b1ef831c6fbdaf089a635e9f4")
     version("10.09.00", sha256="bae6f2dac03d391ed0caf6dbf810035e94dda8986c609de576ff845e5fb1e372")
     version("10.08.01", sha256="fa5967ec95b7b4799e79ac2efd110bd006189131f31ba8ed2573306071dc2bd9")

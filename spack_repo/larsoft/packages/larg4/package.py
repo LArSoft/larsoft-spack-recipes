@@ -17,6 +17,7 @@ class Larg4(CMakePackage, FnalGithubPackage):
     git = "https://github.com/%s" % repo
     version_patterns = ["v09_00_00", "09.18.00"]
 
+    version("11.00.00", sha256="2c0871ab2fa27af08ea08f17cc9e5746e96992e48f0b0dbe9404a09ecf855eab")
     version("10.21.00", sha256="cd2335a86cbf1fbc4c94b0f5e33d8808bcf0a92f96d7f1813ee4796e93356142")
     version("10.20.10", sha256="925f7c2f873afece2188d4c479f5043a1eddc4f89b2205f9d37dd20ec17ebb2c")
     version("10.20.09", sha256="420d4d7f768202da7301dd0f4073e8b3639fdeb5c8c76b758dc1b5d240a821eb")
