@@ -67,7 +67,7 @@ class Larpandoracontent(CMakePackage, FnalGithubPackage):
     def patch(self):
         filter_file(r"set\(PANDORA_MONITORING TRUE\)", "", "CMakeLists.txt")
 
-        if not self.spec.variants["monitoring"].value:
+        if self.spec.satisfies("@:04 ~monitoring"):
             filter_file(
                 r"(PandoraPFA::PandoraMonitoring|MONITORING)",
                 "",
