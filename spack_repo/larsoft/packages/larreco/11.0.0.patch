@@ -1,0 +1,32 @@
+From 7a2198377dcf1a5389d0a2e453e1236a8b631b64 Mon Sep 17 00:00:00 2001
+From: Patrick Gartung <gartung@fnal.gov>
+Date: Tue, 17 Nov 2026 12:33:19 -0600
+Subject: [PATCH] HitFinder/GausHitFinder_module: change size_t& to size_t in
+ tbb::parallel_for lambda so it matches expected signature.
+
+---
+ larreco/HitFinder/GausHitFinder_module.cc | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/larreco/HitFinder/GausHitFinder_module.cc b/larreco/HitFinder/GausHitFinder_module.cc
+index f7a2ac464..952044762 100644
+--- a/larreco/HitFinder/GausHitFinder_module.cc
++++ b/larreco/HitFinder/GausHitFinder_module.cc
+@@ -290,7 +290,7 @@ namespace hit {
+     tbb::parallel_for(
+       static_cast<std::size_t>(0),
+       wirePtrVec.size(),
+-      [&](size_t& wireIter) {
++      [&](size_t wireIter) {
+         // ####################################
+         // ### Getting this particular wire ###
+         // ####################################
+@@ -320,7 +320,7 @@ namespace hit {
+         tbb::parallel_for(
+           static_cast<std::size_t>(0),
+           signalROI.n_ranges(),
+-          [&](size_t& rangeIter) {
++          [&](size_t rangeIter) {
+             const auto& range = signalROI.range(rangeIter);
+             // ROI start time
+             raw::TDCtick_t roiFirstBinTick = range.begin_index();

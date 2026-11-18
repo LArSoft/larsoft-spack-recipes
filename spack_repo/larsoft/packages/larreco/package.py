@@ -86,9 +86,10 @@ class Larreco(CMakePackage, FnalGithubPackage):
     depends_on("range-v3")
     depends_on("root+tmva")
     depends_on("rstartree")
-    depends_on("tbb")
+    depends_on("tbb@:2021")
 
     patch('09.25.00.patch', when='@09.25.00')
+    patch('11.0.0.patch', when='@11.00.00')
 
     @cmake_preset
     def cmake_args(self):
