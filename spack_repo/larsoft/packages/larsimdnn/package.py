@@ -79,14 +79,21 @@ class Larsimdnn(CMakePackage, FnalGithubPackage):
     depends_on("protobuf")
 
     def patch(self):
-        filter_file('#include "tensorflow/cc/saved_model/tag_constants.h"',
-                    '#include "tensorflow/cc/saved_model/bundle_v2.h"\n#include "tensorflow/cc/saved_model/constants.h"\n#include "tensorflow/cc/saved_model/loader.h"',
-                    "larsimdnn/PhotonPropagation/TFLoaderTools/TFLoader.h",
+        with when('+tensorflow'):
+            filter_file('#include "tensorflow/cc/saved_model/tag_constants.h"',
+                        '#include "tensorflow/cc/saved_model/bundle_v2.h"\n#include "tensorflow/cc/saved_model/constants.h"\n#include "tensorflow/cc/saved_model/loader.h"',
+                        "larsimdnn/PhotonPropagation/TFLoaderTools/TFLoader.h",
+                        )
+            filter_file("{tensorflow::kSavedModelTagServe},",
+                        "{},",
+                        "larsimdnn/PhotonPropagation/TFLoaderTools/TFLoaderMLP_tool.cc",
+                        )
+        with when('~tensorflow'):
+            filter_file("find_package\(TensorFlow 2.6.0 QUIET EXPORT\)",
+                    '#find_package(TensorFlow 2.6.0 QUIET EXPORT)',
+                    "CMakeLists.txt"
                     )
-        filter_file("{tensorflow::kSavedModelTagServe},",
-                    "{},",
-                    "larsimdnn/PhotonPropagation/TFLoaderTools/TFLoaderMLP_tool.cc",
-                    )
+
 
     @cmake_preset
     def cmake_args(self):

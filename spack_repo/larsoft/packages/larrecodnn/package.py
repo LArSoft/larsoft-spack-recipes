@@ -99,18 +99,25 @@ class Larrecodnn(CMakePackage, FnalGithubPackage):
 
     def patch(self):
         filter_file("LANGUAGES CXX", "LANGUAGES CXX C", "CMakeLists.txt")
-        filter_file("find_package\(TensorFlow 2.6.0 QUIET EXPORT\)",
-                'list(APPEND CMAKE_FIND_LIBRARY_SUFFIXES ".so.2")\nfind_package(TensorFlow 2.6.0 REQUIRED EXPORT)',
-                "CMakeLists.txt"
-                )
-        filter_file('#include "tensorflow/cc/saved_model/tag_constants.h"',
-                    '#include "tensorflow/cc/saved_model/bundle_v2.h"\n#include "tensorflow/cc/saved_model/constants.h"\n#include "tensorflow/cc/saved_model/loader.h"',
-                    "larrecodnn/ImagePatternAlgs/Tensorflow/TF/tf_graph.cc",
+        with when('+tensorflow'):
+            filter_file("find_package\(TensorFlow 2.6.0 QUIET EXPORT\)",
+                    'list(APPEND CMAKE_FIND_LIBRARY_SUFFIXES ".so.2")\nfind_package(TensorFlow 2.6.0 REQUIRED EXPORT)',
+                    "CMakeLists.txt"
                     )
-        filter_file("{tensorflow::kSavedModelTagServe},",
-                    "{},",
-                    "larrecodnn/ImagePatternAlgs/Tensorflow/TF/tf_graph.cc",
+            filter_file('#include "tensorflow/cc/saved_model/tag_constants.h"',
+                        '#include "tensorflow/cc/saved_model/bundle_v2.h"\n#include "tensorflow/cc/saved_model/constants.h"\n#include "tensorflow/cc/saved_model/loader.h"',
+                        "larrecodnn/ImagePatternAlgs/Tensorflow/TF/tf_graph.cc",
+                        )
+            filter_file("{tensorflow::kSavedModelTagServe},",
+                        "{},",
+                        "larrecodnn/ImagePatternAlgs/Tensorflow/TF/tf_graph.cc",
+                        )
+        with when('~tensorflow'):
+            filter_file("find_package\(TensorFlow 2.6.0 QUIET EXPORT\)",
+                    '#find_package(TensorFlow 2.6.0 QUIET EXPORT)',
+                    "CMakeLists.txt"
                     )
+
         #Take TorchScatter out of all link lists
         filter_file("TorchScatter::TorchScatter",
                     "#TorchScatter::TorchScatter",

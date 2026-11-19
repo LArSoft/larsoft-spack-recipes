@@ -74,7 +74,13 @@ class Larsoft(CMakePackage, FnalGithubPackage):
     variant(
         "tensorflow",
         default=True,
-        description="Include larrecodnn and larsimdnn that depend on tensorflow",
+        description="Build larrecodnn and larsimdnn with tensorflow variant",
+    )
+
+    variant(
+        "dnn",
+        default=True,
+        description="Include larrecodnn and larsimdnn in larsoft bundle",
     )
 
     depends_on("c", type="build")
@@ -99,19 +105,18 @@ class Larsoft(CMakePackage, FnalGithubPackage):
     with when("~eventdisplay"):
         depends_on("larpandoracontent ~monitoring")
 
-    with when("+tensorflow"):
+    with when("+tensorflow+dnn"):
         depends_on("larrecodnn+tensorflow")
         depends_on("larsimdnn+tensorflow")
 
-    with when("~tensorflow"):
+    with when("~tensorflow+dnn"):
         depends_on("larrecodnn~tensorflow")
-        depends_on("larsimdnn~tensorflow")
 
     def patch(self):
         with when("@:09.90.01.01 ~eventdisplay"):
             filter_file(r"find_package\( *lareventdisplay.*", "", "CMakeLists.txt")
 
-        with when("~tensorflow"):
+        with when("~dnn"):
             filter_file(r"find_package\( *larrecodnn.*", "", "CMakeLists.txt")
             filter_file(r"find_package\( *larsimdnn.*", "", "CMakeLists.txt")
 
