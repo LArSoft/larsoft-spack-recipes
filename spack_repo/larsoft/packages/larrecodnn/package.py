@@ -133,6 +133,13 @@ class Larrecodnn(CMakePackage, FnalGithubPackage):
                     "-Wno-stringop-overread;-Wno-stringop-overflow",
                     "larrecodnn/ImageMaker/CMakeLists.txt",
                    )
+        # remove reference to gRPC::grpc
+        for f in ['larrecodnn/ImagePatternAlgs/NuSonic/Triton/CMakeLists.txt',
+                  'larrecodnn/ImagePatternAlgs/Triton/Tools/CMakeLists.txt',
+                  'larrecodnn/NuGraph/CMakeLists.txt']:
+            filter_file("gRPC::grpc", "", f)
+            filter_file("# Should be a transitive \(INTERFACE\) dependency of TritonClient::grpcclient", "", f)
+
 
 
     @cmake_preset
