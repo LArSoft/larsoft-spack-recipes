@@ -73,7 +73,6 @@ class Larrecodnn(CMakePackage, FnalGithubPackage):
     depends_on("cetlib-except")
     depends_on("clhep")
     depends_on("delaunator-cpp")
-    depends_on("grpc")
     depends_on("hdf5")
     depends_on("hep-hpc")
     depends_on("hep-hpc@0_15_00:", when="@10.03.05:")
@@ -88,7 +87,6 @@ class Larrecodnn(CMakePackage, FnalGithubPackage):
     depends_on("messagefacility")
     depends_on("nurandom")
     depends_on("nusimdata")
-    depends_on("protobuf")
     depends_on("py-tensorflow", when="+tensorflow")
     depends_on("py-torch")
     depends_on("torch-scatter")
@@ -133,6 +131,13 @@ class Larrecodnn(CMakePackage, FnalGithubPackage):
                     "-Wno-stringop-overread;-Wno-stringop-overflow",
                     "larrecodnn/ImageMaker/CMakeLists.txt",
                    )
+        # remove reference to gRPC::grpc
+        for f in ['larrecodnn/ImagePatternAlgs/NuSonic/Triton/CMakeLists.txt',
+                  'larrecodnn/ImagePatternAlgs/Triton/Tools/CMakeLists.txt',
+                  'larrecodnn/NuGraph/CMakeLists.txt']:
+            filter_file("gRPC::grpc", "", f)
+            filter_file("# Should be a transitive \(INTERFACE\) dependency of TritonClient::grpcclient", "", f)
+
 
 
     @cmake_preset
@@ -156,29 +161,29 @@ class Larrecodnn(CMakePackage, FnalGithubPackage):
     def setup_build_environment(self, env):
         env.set("TRITON_DIR", self.spec["triton"].prefix.lib)
 
-    @when("+tensorflow")
     def setup_build_environment(self, env):
         env.set("TRITON_DIR", self.spec["triton"].prefix.lib)
-        env.set("TENSORFLOW_DIR",
-                join_path(
-                    self.spec["py-tensorflow"].prefix.lib,
-                    "python{0}/site-packages/tensorflow".format(
-                    self.spec["python"].version.up_to(2))) + ";" +
-                join_path(
-                    self.spec["py-tensorflow"].prefix.lib64,
-                    "python{0}/site-packages/tensorflow".format(
-                    self.spec["python"].version.up_to(2)))
-                )
-        env.set("TENSORFLOW_INC",
-                join_path(
-                    self.spec["py-tensorflow"].prefix.lib,
-                    "python{0}/site-packages/tensorflow/include".format(
-                    self.spec["python"].version.up_to(2))) + ";" +
-                join_path(
-                    self.spec["py-tensorflow"].prefix.lib64,
-                    "python{0}/site-packages/tensorflow/include".format(
-                    self.spec["python"].version.up_to(2)))
-                )
+        with when("+tensorflow"):
+            env.set("TENSORFLOW_DIR",
+                    join_path(
+                        self.spec["py-tensorflow"].prefix.lib,
+                        "python{0}/site-packages/tensorflow".format(
+                        self.spec["python"].version.up_to(2))) + ";" +
+                    join_path(
+                        self.spec["py-tensorflow"].prefix.lib64,
+                        "python{0}/site-packages/tensorflow".format(
+                        self.spec["python"].version.up_to(2)))
+                    )
+            env.set("TENSORFLOW_INC",
+                    join_path(
+                        self.spec["py-tensorflow"].prefix.lib,
+                        "python{0}/site-packages/tensorflow/include".format(
+                        self.spec["python"].version.up_to(2))) + ";" +
+                    join_path(
+                        self.spec["py-tensorflow"].prefix.lib64,
+                        "python{0}/site-packages/tensorflow/include".format(
+                        self.spec["python"].version.up_to(2)))
+                    )
 
     @sanitize_paths
     def setup_run_environment(self, env):
@@ -186,32 +191,32 @@ class Larrecodnn(CMakePackage, FnalGithubPackage):
         env.prepend_path("FHICL_FILE_PATH", self.prefix.job)
         env.prepend_path("FW_SEARCH_PATH", self.prefix.config_data)
 
-    @when("+tensorflow")
     def setup_run_environment(self, env):
         env.prepend_path("CET_PLUGIN_PATH", self.prefix.lib)
         env.prepend_path("FHICL_FILE_PATH", self.prefix.job)
         env.prepend_path("FW_SEARCH_PATH", self.prefix.config_data)
         env.set("TRITON_DIR", self.spec["triton"].prefix.lib)
-        env.set("TENSORFLOW_DIR",
-                join_path(
-                    self.spec["py-tensorflow"].prefix.lib,
-                    "python{0}/site-packages/tensorflow".format(
-                    self.spec["python"].version.up_to(2))) + ";" +
-                join_path(
-                    self.spec["py-tensorflow"].prefix.lib64,
-                    "python{0}/site-packages/tensorflow".format(
-                    self.spec["python"].version.up_to(2)))
-                )
-        env.set("TENSORFLOW_INC",
-                join_path(
-                    self.spec["py-tensorflow"].prefix.lib,
-                    "python{0}/site-packages/tensorflow/include".format(
-                    self.spec["python"].version.up_to(2))) + ";" +
-                join_path(
-                    self.spec["py-tensorflow"].prefix.lib64,
-                    "python{0}/site-packages/tensorflow/include".format(
-                    self.spec["python"].version.up_to(2)))
-                )
+        with when("+tensorflow"):
+            env.set("TENSORFLOW_DIR",
+                    join_path(
+                        self.spec["py-tensorflow"].prefix.lib,
+                        "python{0}/site-packages/tensorflow".format(
+                        self.spec["python"].version.up_to(2))) + ";" +
+                    join_path(
+                        self.spec["py-tensorflow"].prefix.lib64,
+                        "python{0}/site-packages/tensorflow".format(
+                        self.spec["python"].version.up_to(2)))
+                    )
+            env.set("TENSORFLOW_INC",
+                    join_path(
+                        self.spec["py-tensorflow"].prefix.lib,
+                        "python{0}/site-packages/tensorflow/include".format(
+                        self.spec["python"].version.up_to(2))) + ";" +
+                    join_path(
+                        self.spec["py-tensorflow"].prefix.lib64,
+                        "python{0}/site-packages/tensorflow/include".format(
+                        self.spec["python"].version.up_to(2)))
+                    )
 
     def flag_handler(self, name, flags):
         if name == "cxxflags" and self.spec.compiler.name == "gcc":

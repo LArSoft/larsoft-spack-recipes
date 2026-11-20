@@ -67,7 +67,7 @@ class Larsimdnn(CMakePackage, FnalGithubPackage):
     depends_on("cetmodules", type="build")
     depends_on("larfinder", type="build")
 
-    depends_on("eigen")
+    depends_on("eigen@3")
     depends_on("larcorealg")
     depends_on("larcoreobj")
     depends_on("larcore")
@@ -75,8 +75,6 @@ class Larsimdnn(CMakePackage, FnalGithubPackage):
     depends_on("larevt", when="@:09.06.05.01")
     depends_on("larsim")
     depends_on("py-tensorflow", when="+tensorflow")
-    depends_on("grpc")
-    depends_on("protobuf")
 
     def patch(self):
         with when('+tensorflow'):

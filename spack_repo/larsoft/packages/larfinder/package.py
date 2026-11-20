@@ -26,3 +26,8 @@ class Larfinder(CMakePackage, FnalGithubPackage):
     version("develop", branch="develop", get_full_repo=True)
 
     depends_on("cetmodules", type="build")
+
+    def patch(self):
+        filter_file('GIF Protobuf gRPC JPEG Eigen3 PNG SQLite3 Threads ZLIB',
+                    'GIF Protobuf JPEG Eigen3 PNG SQLite3 Threads ZLIB',
+                    'Modules/FindTensorFlow.cmake')
