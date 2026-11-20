@@ -74,9 +74,7 @@ class Larsimdnn(CMakePackage, FnalGithubPackage):
     depends_on("lardataobj")
     depends_on("larevt", when="@:09.06.05.01")
     depends_on("larsim")
-    depends_on("py-tensorflow")
-    depends_on("grpc")
-    depends_on("protobuf")
+    depends_on("py-tensorflow", when="+tensorflow")
 
     def patch(self):
         with when('+tensorflow'):
@@ -99,6 +97,7 @@ class Larsimdnn(CMakePackage, FnalGithubPackage):
     def cmake_args(self):
         return [self.define_from_variant("CMAKE_CXX_STANDARD", "cxxstd")]
 
+    @when("+tensorflow")
     def setup_build_environment(self, env):
         env.set("TENSORFLOW_DIR",
                 join_path(self.spec["py-tensorflow"].prefix.lib,
