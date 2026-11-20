@@ -91,17 +91,15 @@ class Larsoft(CMakePackage, FnalGithubPackage):
     depends_on("larreco")
     depends_on("larsimrad")
     depends_on("larwirecell")
+    depends_on("larrecodnn", when="+tensorflow")
+    depends_on("larsimdnn", when="+tensorflow")
+    depends_on("lareventdisplay", when="+eventdisplay")
 
     with when("+eventdisplay"):
-        depends_on("lareventdisplay")
         depends_on("larpandoracontent +monitoring")
 
     with when("~eventdisplay"):
         depends_on("larpandoracontent ~monitoring")
-
-    with when("+tensorflow"):
-        depends_on("larrecodnn+tensorflow")
-        depends_on("larsimdnn+tensorflow")
 
     def patch(self):
         with when("@:09.90.01.01 ~eventdisplay"):
