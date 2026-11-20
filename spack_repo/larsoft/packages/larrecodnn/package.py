@@ -89,7 +89,7 @@ class Larrecodnn(CMakePackage, FnalGithubPackage):
     depends_on("nurandom")
     depends_on("nusimdata")
     depends_on("protobuf")
-    depends_on("py-tensorflow", when="+tensorflow")
+    depends_on("py-tensorflow")
     depends_on("py-torch")
     depends_on("torch-scatter")
     depends_on("root")
@@ -163,7 +163,6 @@ class Larrecodnn(CMakePackage, FnalGithubPackage):
     def setup_build_environment(self, env):
         env.set("TRITON_DIR", self.spec["triton"].prefix.lib)
 
-    @when("+tensorflow")
     def setup_build_environment(self, env):
         env.set("TRITON_DIR", self.spec["triton"].prefix.lib)
         env.set("TENSORFLOW_DIR",
@@ -193,7 +192,6 @@ class Larrecodnn(CMakePackage, FnalGithubPackage):
         env.prepend_path("FHICL_FILE_PATH", self.prefix.job)
         env.prepend_path("FW_SEARCH_PATH", self.prefix.config_data)
 
-    @when("+tensorflow")
     def setup_run_environment(self, env):
         env.prepend_path("CET_PLUGIN_PATH", self.prefix.lib)
         env.prepend_path("FHICL_FILE_PATH", self.prefix.job)
