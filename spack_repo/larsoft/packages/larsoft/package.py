@@ -107,7 +107,7 @@ class Larsoft(CMakePackage, FnalGithubPackage):
         with when("@:09.90.01.01 ~eventdisplay"):
             filter_file(r"find_package\( *lareventdisplay.*", "", "CMakeLists.txt")
 
-        with when("~dnn"):
+        with when("~tensorflow"):
             filter_file(r"find_package\( *larrecodnn.*", "", "CMakeLists.txt")
             filter_file(r"find_package\( *larsimdnn.*", "", "CMakeLists.txt")
 
