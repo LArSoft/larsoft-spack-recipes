@@ -132,11 +132,12 @@ class Larrecodnn(CMakePackage, FnalGithubPackage):
                     "larrecodnn/ImageMaker/CMakeLists.txt",
                    )
         # remove reference to gRPC::grpc
-        for f in ['larrecodnn/ImagePatternAlgs/NuSonic/Triton/CMakeLists.txt',
-                  'larrecodnn/ImagePatternAlgs/Triton/Tools/CMakeLists.txt',
-                  'larrecodnn/NuGraph/CMakeLists.txt']:
-            filter_file("gRPC::grpc", "", f)
-            filter_file("# Should be a transitive \(INTERFACE\) dependency of TritonClient::grpcclient", "", f)
+        if "^grpc" not in self.spec:
+            for f in ['larrecodnn/ImagePatternAlgs/NuSonic/Triton/CMakeLists.txt',
+                      'larrecodnn/ImagePatternAlgs/Triton/Tools/CMakeLists.txt',
+                      'larrecodnn/NuGraph/CMakeLists.txt']:
+                filter_file("gRPC::grpc", "", f)
+                filter_file("# Should be a transitive \(INTERFACE\) dependency of TritonClient::grpcclient", "", f)
 
 
 
@@ -153,10 +154,15 @@ class Larrecodnn(CMakePackage, FnalGithubPackage):
 
     @property
     def cmake_prefix_paths(self):
-        return [self.prefix,
+        prefixes=[self.prefix,
                 "{0}/lib/python{1}/site-packages/torch".format(
                 self.spec["py-torch"].prefix, self.spec["python"].version.up_to(2))
                 ]
+        if "^grpc" in self.spec:
+            prefixes.append(self.spec("grpc").prefix)
+        if "^protobuf" in self.spec:
+            prefixes.append(self.spec("protobuf").prefix)
+        return prefixes
 
     def setup_build_environment(self, env):
         env.set("TRITON_DIR", self.spec["triton"].prefix.lib)

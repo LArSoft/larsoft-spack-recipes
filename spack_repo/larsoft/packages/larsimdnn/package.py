@@ -97,23 +97,23 @@ class Larsimdnn(CMakePackage, FnalGithubPackage):
     def cmake_args(self):
         return [self.define_from_variant("CMAKE_CXX_STANDARD", "cxxstd")]
 
-    @when("+tensorflow")
     def setup_build_environment(self, env):
-        env.set("TENSORFLOW_DIR",
+        with when("+tensorflow"):
+            env.set("TENSORFLOW_DIR",
+                    join_path(self.spec["py-tensorflow"].prefix.lib,
+                    "python%s/site-packages/tensorflow" % self.spec["python"].version.up_to(2),)
+                    + ";" +
+                    join_path(self.spec["py-tensorflow"].prefix.lib64,
+                    "python%s/site-packages/tensorflow" % self.spec["python"].version.up_to(2),)
+            )
+            env.set(
+                "TENSORFLOW_INC",
                 join_path(self.spec["py-tensorflow"].prefix.lib,
-                "python%s/site-packages/tensorflow" % self.spec["python"].version.up_to(2),)
+                    "python%s/site-packages/tensorflow/include" % self.spec["python"].version.up_to(2),)
                 + ";" +
                 join_path(self.spec["py-tensorflow"].prefix.lib64,
-                "python%s/site-packages/tensorflow" % self.spec["python"].version.up_to(2),)
-        )
-        env.set(
-            "TENSORFLOW_INC",
-            join_path(self.spec["py-tensorflow"].prefix.lib,
-                "python%s/site-packages/tensorflow/include" % self.spec["python"].version.up_to(2),)
-            + ";" +
-            join_path(self.spec["py-tensorflow"].prefix.lib64,
-                "python%s/site-packages/tensorflow/include" % self.spec["python"].version.up_to(2),)
-        )
+                    "python%s/site-packages/tensorflow/include" % self.spec["python"].version.up_to(2),)
+            )
 
     @sanitize_paths
     def setup_run_environment(self, env):
